@@ -1,0 +1,84 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="row">
+    <div class="col-lg-8  p-r-0 title-margin-right">
+        <div class="page-header">
+            <div class="page-title">
+                <h1 class="color-sissa-brown">@ViewBag.Title</h1>
+            </div>
+        </div>
+    </div>
+    <!-- /# column -->
+    <div class="col-lg-4  p-l-0 title-margin-left">
+        <div class="page-header">
+            <div class="page-title">
+                <ol class="breadcrumb">
+                    @if (ViewBag.status == "TD")
+                    {
+                         <li class="breadcrumb-item"><a href="@Url.Action("CustomerBranches","Branches",new{ status="YD"})">Depositos Dia Anterior</a></li>
+                    }
+                    else
+                    {
+                         <li class="breadcrumb-item"><a href="@Url.Action("CustomerBranches","Branches",new{ status="TD"})">Depositos Hoy</a></li>
+                    }
+                   
+
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!-- /# column -->
+</div>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        @if (Convert.ToDecimal(item.Impote.ToString()) > 0)
+        {
+            <div class="col-lg-3">
+                <div class="card">
+                    <div class="stat-widget-four">
+                        <div class="stat-icon color-sissa-green ">
+                            <i class="ti-stats-up  "></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="text-left dib">
+                                <div class="stat-heading ">
+                                    <a class="color-sissa-blue" href="@Url.Action("CustomerDetail","Branches",new{ Clave_Sucursal=item.Clave_Sucursal,status=ViewBag.status })">@item.Nombre_Sucursal</a>
+                                </div>
+                                <div class="stat-text">Total:@Convert.ToDecimal(item.Impote).ToString("C")</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="col-lg-3">
+                <div class="card ">
+                    <div class="stat-widget-four">
+                        <div class="stat-icon color-sissa-black">
+                            <i class="ti-stats-up "></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="text-left dib">
+                                <div class="stat-heading">
+                                    <a class="color-sissa-black" href="@Url.Action("CustomerDetail","Branches",new{ Clave_Sucursal=item.Clave_Sucursal,status=ViewBag.status })">@item.Nombre_Sucursal</a>
+                                </div>
+                                <div class="stat-text">Total:$ @item.Impote</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    }
+
+
+
+</div>

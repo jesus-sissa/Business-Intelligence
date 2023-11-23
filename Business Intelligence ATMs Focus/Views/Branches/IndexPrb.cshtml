@@ -1,0 +1,202 @@
+﻿
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model List<Business_Intelligence_ATMs_Focus.Models.Sucursales>
+@{
+}
+<style>
+    .stat-digit-min {
+        font-size: 25px;
+    }
+
+    .stat-widget-five .stat-heading {
+        text-align: left;
+        padding-left: 0px;
+        font-size: 20px;
+        font-weight: 200;
+    }
+    .mt-n8, .my-n8 {
+    margin-top: -4.0625rem !important;
+}
+</style>
+@*@Html.Hidden("Get", Url.Action("GetSQL", "Sucursales"))*@
+<div class="row" id="principal">
+
+
+
+    @foreach (var item in Model)
+    {
+        @if (item.Minutos_desconexion > 10)
+        {
+
+            <div class="col-lg-3 ">
+                <div class="card">
+                    <div class="stat-widget-one">
+                        <div class="stat-icon dib">
+                            @* @if (item.Minutos_desconexion <= 10)
+                    {
+                    <i class="ti-power-off bg-sissa-red"></i>
+                    }
+                    else
+                    {
+                    <i class="ti-power-off bg-sissa-green"></i>
+                    }*@
+                            <i class="ti-power-off bg-sissa-red"></i>
+                        </div>
+                        <div class="stat-content dib">
+                            @if (item.Dias_SinDepositar == 0)
+                            {
+                                <div class="stat-text">@item.Alias <span class="badge-sissa badge-success">D</span></div>
+                            }
+                            else if (item.Dias_SinDepositar == 1)
+                            {
+                                <div class="stat-text">@item.Alias <span class="badge-sissa badge-warning">D</span></div>
+                            }
+                            else if (item.Dias_SinDepositar > 1)
+                            {
+                                <div class="stat-text">@item.Alias <span class="badge-sissa badge-danger">D</span> Necesita Revision</div>
+                            }
+
+                            <div class="stat-digit">
+                                @if (item.Minutos_desconexion > 10)
+                                {
+                                    <a class="" title="@item.Nombre_Sucursal" href="@Url.Action("Detail", "Branches",new { Clave_Sucursal =@item.Clave_Sucursal,status="TD",alias=item.Alias })">
+                                        @item.Nombre_Sucursal
+
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a class="color-sissa-green" title="@item.Nombre_Sucursal" href="@Url.Action("Detail", "Branches",new { Clave_Sucursal =@item.Clave_Sucursal,status="TD",alias=item.Alias })">
+                                        @item.Nombre_Sucursal
+
+                                    </a>
+                                }
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    @foreach (var item in Model)
+    {
+        if (item.Minutos_desconexion <= 10)
+        {
+            <div class="col-lg-3 ">
+                <div class="card">
+                    <div class="stat-widget-one">
+                        <div class="stat-icon dib">
+                            @* @if (item.Minutos_desconexion <= 10)
+                    {
+                    <i class="ti-power-off bg-sissa-red"></i>
+                    }
+                    else
+                    {
+                    <i class="ti-power-off bg-sissa-green"></i>
+                    }*@
+                            <i class="ti-power-off bg-sissa-green"></i>
+                        </div>
+                        <div class="stat-content dib">
+                            @if (item.Dias_SinDepositar == 0)
+                            {
+                                <div class="stat-text">@item.Alias <span class="badge-sissa badge-success">D</span></div>
+                            }
+                            else if (item.Dias_SinDepositar == 1)
+                            {
+                                <div class="stat-text">@item.Alias <span class="badge-sissa badge-warning">D</span></div>
+                            }
+                            else if (item.Dias_SinDepositar > 1)
+                            {
+                                <div class="stat-text">@item.Alias <span class="badge-sissa badge-danger">D</span> Necesita Revision</div>
+                            }
+
+                            <div class="stat-digit">
+                                @if (item.Minutos_desconexion > 10)
+                                {
+                                    <a class="" title="@item.Nombre_Sucursal" href="@Url.Action("Detail", "Branches",new { Clave_Sucursal =@item.Clave_Sucursal,status="TD",alias=item.Alias })">
+                                        @item.Nombre_Sucursal
+
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a class="color-sissa-green" title="@item.Nombre_Sucursal" href="@Url.Action("Detail", "Branches",new { Clave_Sucursal =@item.Clave_Sucursal,status="TD",alias=item.Alias })">
+                                        @item.Nombre_Sucursal
+
+                                    </a>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+
+    }
+</div>
+
+
+
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function() {
+            if (@ViewBag.Revisar > 0) {
+
+                toastr.error("@ViewBag.Revisar Sucursales No Sincronizan Depositos", 'Error en Sincronizacion de Depositos', {
+                    "positionClass": "toast-top-full-width",
+                    timeOut: 5000,
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": true,
+                    "progressBar": true,
+                    "preventDuplicates": true,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut",
+                    "tapToDismiss": false
+
+                });
+            }
+
+            if (@ViewBag.Desconectadas > 0) {
+
+                toastr.error("@ViewBag.Desconectadas Sucursales Desconectadas", 'Error en Conexion de Sucursales', {
+                    "positionClass": "toast-top-full-width",
+                    timeOut: 5000,
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": true,
+                    "progressBar": true,
+                    "preventDuplicates": true,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut",
+                    "tapToDismiss": false
+
+                });
+            }
+
+
+
+        });
+    </script>
+}

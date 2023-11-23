@@ -1,0 +1,735 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    List<Sucursales> lista = Data._Sucursales;
+
+    var clv = ViewBag.Clave_Sucursal;
+    var sucursal = lista.Find(x => x.Clave_Sucursal == Convert.ToString(ViewBag.Clave_Sucursal));
+    var status = ViewBag.status;
+}
+
+
+
+<div class="row">
+    <div class="col-lg-12 p-r-0 title-margin-right">
+        <div class="page-header">
+            <div class="page-title">
+                <h1 class="color-sissa-brown">
+                    <a href="@Url.Action("CustomerBranches","Branches",new{status=ViewBag.status})">
+                        <i class="ti-arrow-left"></i>
+                    </a>
+                    <span>@sucursal.Nombre_Sucursal</span>
+                </h1>
+            </div>
+        </div>
+    </div>
+    <!-- /# column -->
+    <!-- /# column -->
+</div>
+
+<div class="row">
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="stat-widget-one">
+                <div class="stat-icon dib">
+                    <i class="ti-layers color-primary border-primary"></i>
+                </div>
+                <div class="stat-content dib">
+                    <div class="stat-text">Depósitos del Mes</div>
+                    <div class="stat-digit">@Model[0].Deposit_today</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="stat-widget-one">
+                <div class="stat-icon dib">
+                    <i class="ti-money color-success border-success"></i>
+                </div>
+                <div class="stat-content dib">
+                    <div class="stat-text">Efectivo del Mes</div>
+                    <div class="stat-digit">@Convert.ToDecimal(Model[0].Impote).ToString("C")</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Graficas-->
+<div class="row">
+    <div class="col-12 col-lg-12">
+        <div class="card card-default">
+
+            <div class="card-body" activity-data-spacing="">
+                <div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                <canvas id="gfDepositosMes" width="494" height="280" style="display: block; width: 494px; height: 280px;" class="chartjs-render-monitor"></canvas>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<div class="row">
+    <div class="col-12 col-lg-8">
+        <div class="card card-default">
+
+            <div class="card-body" activity-data-spacing="">
+                <div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                <canvas id="gfDepositosDia" width="494" height="280" style="display: block; width: 494px; height: 280px;" class="chartjs-render-monitor"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-lg-4">
+        <div class="card card-default">
+
+            <div class="card-body" activity-data-spacing="">
+                <div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                <canvas id="gfDepositosDetalle" width="494" height="280" style="display: block; width: 494px; height: 280px;" class="chartjs-render-monitor"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+@*<div class="row">
+    <div class="col-12 col-lg-12">
+        <div class="card card-default">
+
+            <div class="card-body" activity-data-spacing="">
+                <div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                <canvas id="gfDepositos" width="494" height="280" style="display: block; width: 494px; height: 280px;" class="chartjs-render-monitor"></canvas>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+<!--CONSULTAS DE INFORMACION-->
+<div class="row">
+
+    <div class="col-lg-6 col-xl-6 col-xxl-6">
+        <div class="card card-default mt-7">
+            <div class="card-body text-center">
+                <a class="d-block mb-2">
+
+                    <h5 class="card-title">Depósitos</h5>
+
+                </a>
+
+                <ul class="list-unstyled d-inline-block mb-1">
+                    <li class="d-flex mb-1">
+                        <i class="mdi mdi-map mr-1"></i>
+                        <span>Último Depósito</span>
+                    </li>
+                </ul>
+
+                <div class="row justify-content-center">
+                    <div class="col-4 px-1">
+                        <div class=" circle" data-size="60" data-value="0.90" data-thickness="4" data-fill="{
+                &quot;color&quot;: &quot;#35D00E&quot;
+              }">
+                            <div class="circle-content">
+                                <h6 class="text-uppercase">Fecha</h6>
+                                <h6>@ViewBag.Fecha</h6>
+                                <strong></strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-4 px-1">
+                        <div class=" circle" data-size="60" data-value="0.65" data-thickness="4" data-fill="{
+                &quot;color&quot;: &quot;#fec400&quot;
+              }">
+                            <div class="circle-content">
+                                <h6 class="text-uppercase">Hora</h6>
+                                <h6>@ViewBag.Hora</h6>
+                                <strong></strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-4 px-1">
+                        <div class=" circle" data-size="60" data-value="0.35" data-thickness="4" data-fill="{
+                &quot;color&quot;: &quot;#fe5461&quot;
+              }">
+                            <div class="circle-content">
+                                <h6 class="text-uppercase">Importe</h6>
+                                <h6>@ViewBag.Importe</h6>
+                                <strong></strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="w-100 btn btn-sissa" id="Depositos" href="@Url.Action("CashDeposits", "Branches",new {Clave_Sucursal=@ViewBag.Lista.Clave_Sucursal,role="US",status=ViewBag.status,alias=sucursal.Alias})">Ver detalles</a>
+        </div>
+    </div>
+
+    <div class="col-lg-6 col-xl-6 col-xxl-6">
+        <div class="card card-default mt-7">
+            <div class="card-body text-center">
+                <a class="d-block mb-2">
+
+                    <h5 class="card-title">Recolecciónes SISSA</h5>
+
+                </a>
+
+                <ul class="list-unstyled d-inline-block mb-1">
+                    <li class="d-flex mb-1">
+                        <i class="mdi mdi-map mr-1"></i>
+                        <span>Última Recolección</span>
+                    </li>
+                </ul>
+
+                <div class="row justify-content-center">
+                    <div class="col-4 px-1">
+                        <div class=" circle" data-size="60" data-value="0.90" data-thickness="4" data-fill="{
+                &quot;color&quot;: &quot;#35D00E&quot;
+              }">
+                            <div class="circle-content">
+                                <h6 class="text-uppercase">Fecha</h6>
+                                <h6>@ViewBag.FechaR</h6>
+                                <strong></strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-4 px-1">
+                        <div class=" circle" data-size="60" data-value="0.65" data-thickness="4" data-fill="{
+                &quot;color&quot;: &quot;#fec400&quot;
+              }">
+                            <div class="circle-content">
+                                <h6 class="text-uppercase">Hora</h6>
+                                <h6>@ViewBag.HoraR</h6>
+                                <strong></strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-4 px-1">
+                        <div class=" circle" data-size="60" data-value="0.35" data-thickness="4" data-fill="{
+                &quot;color&quot;: &quot;#fe5461&quot;
+              }">
+                            <div class="circle-content">
+                                <h6 class="text-uppercase">Importe</h6>
+                                <h6>@ViewBag.ImporteR</h6>
+                                <strong></strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="w-100 btn btn-sissa" id="Retiros" href="@Url.Action("CashWithdrawal", "Branches",new {Clave_Sucursal=@ViewBag.Lista.Clave_Sucursal,role="US",status=ViewBag.status,alias=sucursal.Alias})">Ver detalles</a>
+        </div>
+    </div>
+
+    @* <div class="col-lg-6 col-xl-4 col-xxl-3">
+    <div class="card card-default mt-7">
+    <div class="card-body text-center">
+    <a class="d-block mb-2">
+
+    <h5 class="card-title">Movimientos</h5>
+
+    </a>
+
+    <ul class="list-unstyled d-inline-block mb-1">
+    <li class="d-flex mb-1">
+    <i class="mdi mdi-map mr-1"></i>
+    <span></span>
+    </li>
+    </ul>
+    <br />
+    <br />
+    <br />
+    <br />
+    </div>
+    <a class="w-100 btn btn-success" id="Movimientos" href="@Url.Action("CashMovements", "Branches",new {Clave_Sucursal=@ViewBag.Lista.Clave_Sucursal})">Ver detalles</a>
+    </div>
+    </div>*@
+
+
+</div>
+
+
+
+@section Scripts{
+    <script type="text/javascript">
+        var arrayNombClavSuc = [,];
+        var arrayDepositos = [, ,];
+        var arrayDepositosMes = [, ,];
+        var grfDepositosDiaMes = null;
+        var grfDesgloseDia = null;
+        $(document).ready(function() {
+            //      GRAFICAS CUSTOMER DETAIL     //
+            //-------------------------------------------------------------------------------------------------------//
+            //Depositos de sucursal
+
+            //ReporteEfectivoSemanal();
+            ReporteDepositosMes();
+
+        });
+
+        //funciones DayDepositReport
+        function ReporteDepositosMes() {
+            $.ajax({
+                //url: 'Url.Action("DayDepositReport", "Branches",new{ Clave_Sucursal=ViewBag.Clave_Sucursal,status=ViewBag.status})',
+                url: '/CajerosInteligentes/Branches/MonthDepositReport?Clave_Sucursal=@ViewBag.Clave_Sucursal&status=@ViewBag.status',
+                type: "GET",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function(data) {
+
+                    /*console.log(data);*/
+                    var dataImporte = [];
+                    var dataFechas = [];
+                    for (var i = 0; i < data.length; i++) {
+
+                        dataImporte.push(data[i].impote);
+                        dataFechas.push(data[i].fecha);
+                        arrayDepositosMes.push([data[i].clave_Sucursal, data[i].fecha]);
+                    }
+
+                    console.log("---------------------------")
+                    console.log("------meses ------------")
+                    console.log(dataFechas)
+                    console.log("---------------------------")
+                    console.log("------importe ------------")
+                    console.log(dataImporte);
+                    //----------------------------------------------------------------------------------
+                    var activity = document.getElementById("gfDepositosMes");
+                    if (activity !== null) {
+
+                        var config = {
+                            // The type of chart we want to create
+                            type: "line",
+                            // The data for our dataset
+                            data: {
+                                labels: dataFechas,
+                                datasets: [
+                                    {
+                                        label: "Efectivo",
+                                        backgroundColor: "transparent",
+                                        borderColor: "#6cb5d6",
+                                        data: dataImporte,
+                                        lineTension: 0,
+                                        pointRadius: 5,
+                                        pointBackgroundColor: "rgba(255,255,255,1)",
+                                        pointHoverBackgroundColor: "rgba(255,255,255,1)",
+                                        pointBorderWidth: 2,
+                                        pointHoverRadius: 7,
+                                        pointHoverBorderWidth: 1
+                                    }
+                                ]
+                            },
+                            // Configuration options go here
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                legend: {
+                                    display: true,
+
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Depositos del Mes',
+                                    font: {
+                                        size: 32,
+                                        family: 'tahoma',
+                                        weight: 'normal',
+                                        style: 'italic'
+                                    }
+                                },
+                                scales: {
+                                    xAxes: [
+                                        {
+                                            gridLines: {
+                                                display: false,
+                                            },
+                                            ticks: {
+                                                fontColor: "#8a909d", // this here
+
+                                            },
+                                        }
+                                    ],
+                                    yAxes: [
+                                        {
+                                            gridLines: {
+                                                fontColor: "#8a909d",
+                                                fontFamily: "Roboto, sans-serif",
+                                                display: true,
+                                                color: "#eee",
+                                                zeroLineColor: "#eee"
+                                            },
+                                            ticks: {
+                                                callback: function(tick, index, array) {
+                                                    return tick.toLocaleString("en-US", { style: "currency", currency: "USD" });
+                                                },
+                                                stepSize: 25000,
+                                                fontColor: "#8a909d",
+                                                fontFamily: "Roboto, sans-serif"
+                                            }
+                                        }
+                                    ]
+                                },
+                                onClick: function(e) {
+                                    //debugger;
+
+                                    console.log(this.getElementsAtEvent(e)[0]._chart.config.data.labels[this.getElementsAtEvent(e)[0]._index]);
+                                    var fecha = this.getElementsAtEvent(e)[0]._chart.config.data.labels[this.getElementsAtEvent(e)[0]._index]
+                                    console.log(arrayDepositosMes.filter(d => d[1] == fecha)[0][1]);
+                                    var clave_sucursal = arrayDepositosMes.filter(d => d[1] == fecha)[0][0];
+
+                                    if (fecha != "") {
+
+                                        //cargar desglose
+                                        ReporteDepositosDia(clave_sucursal, fecha)
+                                        //window.location.href = '/Branches/CustomerDetail/?Clave_Sucursal=' + clave_sucursal;
+                                    }
+
+                                    //alert(activePointLabel);
+                                },
+                                tooltips: {
+                                    mode: "index",
+                                    callbacks: {
+                                        label: function(tooltipItem, data) {
+                                            return (
+                                                tooltipItem.yLabel.toLocaleString("en-US", { style: "currency", currency: "USD" })
+
+                                            );
+                                        },
+                                    },
+                                    intersect: false,
+                                    titleFontColor: "#888",
+                                    bodyFontColor: "#555",
+                                    titleFontSize: 12,
+                                    bodyFontSize: 15,
+                                    backgroundColor: "rgba(256,256,256,0.95)",
+                                    displayColors: true,
+                                    xPadding: 10,
+                                    yPadding: 7,
+                                    borderColor: "rgba(220, 220, 220, 0.9)",
+                                    borderWidth: 2,
+                                    caretSize: 6,
+                                    caretPadding: 5.
+
+                                }
+                            }
+                        };
+
+                        var ctx = document.getElementById("gfDepositosMes").getContext("2d");
+                        var myLine = new Chart(ctx, config);
+                        var fecha = arrayDepositosMes[2][1];
+                        var clv_suc = arrayDepositosMes[2][0];
+
+                        ReporteDepositosDia(clv_suc, fecha)
+                    }
+
+
+                    //--------------------------------------------------------------------------------------
+
+                },
+                error: function(error) {
+                    console.log(error)
+                }
+            });
+        }
+
+        function ReporteDepositosDia(Clave_Sucursal, fecha) {
+            $.ajax({
+                //url: 'Url.Action("DayDepositReport", "Branches",new{ Clave_Sucursal=ViewBag.Clave_Sucursal,status=ViewBag.status})',
+                url: '/CajerosInteligentes/Branches/DayMonthDepositReport?Clave_Sucursal=' + Clave_Sucursal + '&fecha=' + fecha,
+                type: "GET",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function(data) {
+
+                    /*console.log(data);*/
+                    var dataImporte = [];
+                    var dataFechas = [];
+                    arrayDepositos = [, ,]
+                    for (var i = 0; i < data.length; i++) {
+
+                        dataImporte.push(data[i].impote);
+                        dataFechas.push(data[i].hora_Fin);
+                        arrayDepositos.push([data[i].id_Deposito, data[i].hora_Fin, data[i].clave_Sucursal, data[i].impote]);
+                    }
+
+                    console.log("---------------------------")
+                    console.log("------meses ------------")
+                    console.log(dataFechas)
+                    console.log("---------------------------")
+                    console.log("------importe ------------")
+                    console.log(dataImporte);
+                    //----------------------------------------------------------------------------------
+                    var activity = document.getElementById("gfDepositosDia");
+                    if (activity !== null) {
+
+                        var config = {
+                            // The type of chart we want to create
+                            type: "line",
+                            // The data for our dataset
+                            data: {
+                                labels: dataFechas,
+                                datasets: [
+                                    {
+                                        label: "Efectivo",
+                                        backgroundColor: "transparent",
+                                        borderColor: "#6cb5d6",
+                                        data: dataImporte,
+                                        lineTension: 0,
+                                        pointRadius: 5,
+                                        pointBackgroundColor: "rgba(255,255,255,1)",
+                                        pointHoverBackgroundColor: "rgba(255,255,255,1)",
+                                        pointBorderWidth: 2,
+                                        pointHoverRadius: 7,
+                                        pointHoverBorderWidth: 1
+                                    }
+                                ]
+                            },
+                            // Configuration options go here
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                legend: {
+                                    display: true,
+
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Depositos del Día Seleccionado',
+                                    font: {
+                                        size: 32,
+                                        family: 'tahoma',
+                                        weight: 'normal',
+                                        style: 'italic'
+                                    }
+                                },
+                                scales: {
+                                    xAxes: [
+                                        {
+                                            gridLines: {
+                                                display: false,
+                                            },
+                                            ticks: {
+                                                fontColor: "#8a909d", // this here
+
+                                            },
+                                        }
+                                    ],
+                                    yAxes: [
+                                        {
+                                            gridLines: {
+                                                fontColor: "#8a909d",
+                                                fontFamily: "Roboto, sans-serif",
+                                                display: true,
+                                                color: "#eee",
+                                                zeroLineColor: "#eee"
+                                            },
+                                            ticks: {
+                                                callback: function(tick, index, array) {
+                                                    return tick.toLocaleString("en-US", { style: "currency", currency: "USD" });
+                                                },
+                                                stepSize: 25000,
+                                                fontColor: "#8a909d",
+                                                fontFamily: "Roboto, sans-serif"
+                                            }
+                                        }
+                                    ]
+                                },
+                                onClick: function(e) {
+                                    //debugger;
+
+                                    console.log(this.getElementsAtEvent(e)[0]._chart.config.data.labels[this.getElementsAtEvent(e)[0]._index]);
+                                    var deposito = this.getElementsAtEvent(e)[0]._chart.config.data.labels[this.getElementsAtEvent(e)[0]._index]
+                                    console.log(arrayDepositos.filter(d => d[1] == deposito)[0][1]);
+                                    var id_deposito = arrayDepositos.filter(d => d[1] == deposito)[0][0];
+                                    var clave_sucursal = arrayDepositos.filter(d => d[1] == deposito)[0][2];
+                                    var importe = arrayDepositos.filter(d => d[1] == deposito)[0][3];
+                                    if (id_deposito != "") {
+
+                                        //cargar desglose
+                                        ReporteDepositoDetalle(clave_sucursal, id_deposito, ToNumeric(parseInt(importe)));
+                                        //window.location.href = '/Branches/CustomerDetail/?Clave_Sucursal=' + clave_sucursal;
+                                    }
+
+                                    //alert(activePointLabel);
+                                },
+                                tooltips: {
+                                    mode: "index",
+                                    callbacks: {
+                                        label: function(tooltipItem, data) {
+                                            return (
+                                                tooltipItem.yLabel.toLocaleString("en-US", { style: "currency", currency: "USD" })
+
+                                            );
+                                        },
+                                    },
+                                    intersect: false,
+                                    titleFontColor: "#888",
+                                    bodyFontColor: "#555",
+                                    titleFontSize: 12,
+                                    bodyFontSize: 15,
+                                    backgroundColor: "rgba(256,256,256,0.95)",
+                                    displayColors: true,
+                                    xPadding: 10,
+                                    yPadding: 7,
+                                    borderColor: "rgba(220, 220, 220, 0.9)",
+                                    borderWidth: 2,
+                                    caretSize: 6,
+                                    caretPadding: 5.
+
+                                }
+                            }
+                        };
+
+                        var ctx = document.getElementById("gfDepositosDia").getContext("2d");
+                        
+                        //var myLine = new Chart(ctx, config);
+                        if (grfDepositosDiaMes != null) 
+                        {
+                            grfDepositosDiaMes.clear(); 
+                            grfDepositosDiaMes.destroy(); 
+                        }
+                        grfDepositosDiaMes = new Chart(ctx, config);
+                        var clv_suc = arrayDepositos[2][2];
+                        var idDep = arrayDepositos[2][0];
+                        var importe = arrayDepositos[2][3];
+                        ReporteDepositoDetalle(clv_suc, idDep, ToNumeric(parseInt(importe)));
+                    }
+
+
+                    //--------------------------------------------------------------------------------------
+
+                },
+                error: function(error) {
+                    console.log(error)
+                }
+            });
+        }
+
+        function ReporteDepositoDetalle(clave_Sucursal, id_Deposito, importe) {
+
+            $.ajax({
+                url: "/CajerosInteligentes/Branches/DetailDepositReport?Clave_Sucursal=" + clave_Sucursal + "&Id_Deposito=" + id_Deposito,
+                type: "GET",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function(data) {
+
+                    /*console.log(data);*/
+                    var dataDenominacion = [];
+                    var dataCantidad = [];
+                    var rgbback = [];
+                    var rgbhover = [];
+                    for (var i = 0; i < data.length; i++) {
+
+                        dataDenominacion.push(data[i].denominacion);
+                        dataCantidad.push(data[i].cantidad);
+                        if (data[i].denominacion == "20") {
+                            rgbback.push('rgba(0,191,255,.7)');
+                            rgbhover.push('rgba(0,191,255,.9)');
+                        }
+                        if (data[i].denominacion == "50") {
+                            rgbback.push('rgba(240,128,128,.7)');
+                            rgbhover.push('rgba(240,128,128,.9)');
+                        }
+                        if (data[i].denominacion == "100") {
+                            rgbback.push('rgba(240,230,140,.7)');
+                            rgbhover.push('rgba(240,230,140,.9)');
+                        }
+                        if (data[i].denominacion == "200") {
+                            rgbback.push('rgba(60,179,113,.7)');
+                            rgbhover.push('rgba(60,179,113,.9)');
+                        }
+                        if (data[i].denominacion == "500") {
+                            rgbback.push('rgb(89, 170, 245,.7)');
+                            rgbhover.push('rgb(89, 170, 245,.9)');
+                        }
+                        if (data[i].denominacion == "1000") {
+                            rgbback.push('rgba(123,104,238,.7)');
+                            rgbhover.push('rgba(123,104,238,.9)');
+                        }
+                    }
+
+                    //console.log("---------------------------")
+                    //console.log("------meses ------------")
+                    //console.log(dataFechas)
+                    //console.log("---------------------------")
+                    //console.log("------importe ------------")
+                    //console.log(dataImporte);
+                    //----------------------------------------------------------------------------------
+                    var ctx = document.getElementById("gfDepositosDetalle");
+                    //ctx.height = 250;
+                    //var myChart = new Chart(ctx, {
+                     if (grfDesgloseDia != null) 
+                        {
+                            grfDesgloseDia.clear(); 
+                            grfDesgloseDia.destroy(); 
+                        }
+                    grfDesgloseDia = new Chart(ctx, {
+                        type: 'doughnut',
+                        data: {
+                            datasets: [{
+                                data: dataCantidad,
+                                backgroundColor: rgbback,
+                                hoverBackgroundColor: rgbhover
+
+                            }],
+                            labels: dataDenominacion
+
+                        },
+                        options: {
+                            responsive: true,
+                            title: {
+                                display: true,
+                                text: 'Desglose de Deposito ' + importe,
+                                font: {
+                                    size: 32,
+                                    family: 'tahoma',
+                                    weight: 'normal',
+                                    style: 'italic'
+                                }
+                            }
+                        }
+                    });
+
+
+                    //--------------------------------------------------------------------------------------
+
+                },
+                error: function(error) {
+                    console.log(error)
+                }
+            });
+        }
+
+        function ToChartNumbers(config) {
+            var cfg = config || {};
+            var min = valueOrDefault(cfg.min, 0);
+            var max = valueOrDefault(cfg.max, 100);
+            var from = valueOrDefault(cfg.from, []);
+            var count = valueOrDefault(cfg.count, 8);
+            var decimals = valueOrDefault(cfg.decimals, 8);
+            var continuity = valueOrDefault(cfg.continuity, 1);
+            var dfactor = Math.pow(10, decimals) || 0;
+            var data = [];
+            var i, value;
+
+            for (i = 0; i < count; ++i) {
+                value = (from[i] || 0) + this.rand(min, max);
+                if (this.rand() <= continuity) {
+                    data.push(Math.round(dfactor * value) / dfactor);
+                } else {
+                    data.push(null);
+                }
+            }
+
+            return data;
+        }
+
+        let ToNumeric = (number => {
+            return number.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2 });
+        });
+    </script>
+}

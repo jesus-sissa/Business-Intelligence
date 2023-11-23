@@ -1,0 +1,86 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
+    <div class="nano has-scrollbar">
+        <div class="nano-content active" tabindex="0" style="right: -17px;">
+            <ul class="d-block">
+                <div class="logo">
+                    <div class="app-brand w-100 d-flex justify-content-center border-bottom-0">
+                        @if (User.IsInRole("Administrador") || User.IsInRole("Soporte"))
+                        {
+                            <a class="w-auto pl-0" href="@Url.Action("Index","Branches")">
+                                <img src="~/images/_logo.png" alt="Mono">
+                            </a>
+                        }
+                        else
+                        {
+                            <a class="w-auto pl-0" href="@Url.Action("Index","Home")">
+                                <img src="~/images/_logo.png" alt="Mono">
+                            </a>
+                        }
+
+                    </div>
+                </div>
+                @if (User.IsInRole("Usuario"))
+                {
+                    <li>
+                        <a class="sidebar-sub-toggle"><i class="ti-home"></i> Dashboard <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="@Url.Action("Index","Home")">General</a></li>
+                            @*<li><a href="@Url.Action("Index","Home")">Dashboard </a></li>*@
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="sidebar-sub-toggle"><i class="ti-layout-grid2-thumb"></i> Sucursales <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="@Url.Action("CustomerBranches","Branches",new { status="TD"})">Depósitos Diarios</a></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="sidebar-sub-toggle"><i class="ti-receipt"></i> Consultas <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="@Url.Action("Deposits","Inquiries",new { status="TD"})">Depósitos</a></li>
+                            <li><a href="@Url.Action("Withdrawal","Inquiries",new { status="TD"})">Recolecciones</a></li>
+                            <li><a href="@Url.Action("Movements","Inquiries",new { status="TD"})">Movimientos</a></li>
+                        </ul>
+                    </li>
+                }
+
+                @if (User.IsInRole("Soporte"))
+                {
+                    <li>
+                        <a class="sidebar-sub-toggle"><i class="ti-layout-grid2-thumb"></i> Sucursales <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="@Url.Action("Index","Branches",new { status="All"})">Monitoreo</a></li>
+                        </ul>
+                    </li>
+                }
+
+                @if (User.IsInRole("Administrador"))
+                {
+                    <li>
+                        <a class="sidebar-sub-toggle"><i class="ti-layout-grid2-thumb"></i> Sucursales <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="@Url.Action("Index","Branches",new { status="All"})">Monitoreo</a></li>
+                        </ul>
+                    </li>
+                    @* <li>
+                <a class="sidebar-sub-toggle"><i class="ti-layout-grid2-thumb"></i>Gestión<span class="sidebar-collapse-icon ti-angle-down"></span> </a>
+                <ul>
+                <li><a href="@Url.Action("Users","Management")">Usuarios</a></li>
+                <li><a href="@Url.Action("Clients","Management")">Clientes</a></li>
+                </ul>
+                </li>*@
+                }
+                @*<li><a href="@Url.Action("LogOut","Users")"><i class="ti-close"></i> Logout</a></li>*@
+            </ul>
+        </div>
+        <div class="nano-pane"><div class="nano-slider" style="height: 798px; transform: translate(0px, 0px);"></div></div>
+    </div>
+</div>
+<!-- /# sidebar -->

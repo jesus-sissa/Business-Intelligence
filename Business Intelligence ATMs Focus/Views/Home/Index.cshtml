@@ -1,0 +1,596 @@
+﻿@{
+
+    ViewData["Title"] = "Home Page";
+    Layout = "../Shared/_Layout.cshtml";
+
+
+}
+<div class="row">
+    <div class="col-lg-8  p-r-0 title-margin-right">
+        <div class="page-header">
+            <div class="page-title">
+                <h5 class="color-sissa-brown">
+                    Depósitos Diarios
+                    @*<a class="color-sissa-brown" href="@Url.Action("CustomerBranches","Branches")">... Ver mas</a>*@
+                </h5>
+            </div>
+        </div>
+    </div>
+    <!-- /# column -->
+    <div class="col-lg-4  p-l-0 title-margin-left">
+        <div class="page-header">
+            <div class="page-title">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action("CustomerBranches","Branches",new{ status="YD"})">Depósitos Dia anterior</a></li>
+
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!-- /# column -->
+</div>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        @if (Convert.ToDecimal(item.Impote.ToString()) > 0)
+        {
+            <div class="col-lg-3">
+                <div class="card">
+                    <div class="stat-widget-four">
+                        <div class="stat-icon color-sissa-green ">
+                            <i class="ti-stats-up  "></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="text-left dib">
+                                <div class="stat-heading ">
+                                    <a class="color-sissa-blue" href="@Url.Action("CustomerDetail","Branches",new{ Clave_Sucursal=item.Clave_Sucursal,status="TD" })">@item.Nombre_Sucursal</a>
+                                </div>
+                                <div class="stat-text">Total:@Convert.ToDecimal(item.Impote).ToString("C")</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="col-lg-3">
+                <div class="card ">
+                    <div class="stat-widget-four">
+                        <div class="stat-icon color-sissa-black">
+                            <i class="ti-stats-up "></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="text-left dib">
+                                <div class="stat-heading">
+                                    <a class="color-sissa-black" href="@Url.Action("CustomerDetail","Branches",new{ Clave_Sucursal=item.Clave_Sucursal,status="TD" })">@item.Nombre_Sucursal</a>
+                                </div>
+                                <div class="stat-text">Total:$ @item.Impote</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+
+
+
+</div>
+
+
+<div class="row">
+    <div class="col-12 col-lg-12">
+        <div class="card card-default">
+
+            <div class="card-body" activity-data-spacing="">
+                <div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                <canvas id="activity" width="494" height="280" style="display: block; width: 494px; height: 280px;" class="chartjs-render-monitor"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-title">
+                <h4>Últimos Depósitos</h4>
+
+            </div>
+            <div class="card-body">
+                <ul id="timeLineDepositos" class="timeline box asScrollable  asScrollable-container">
+                </ul>
+            </div>
+        </div>
+        <!-- /# card -->
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-title">
+                <h4>Recolecciones  SISSA</h4>
+
+            </div>
+            <div class="card-body" >
+                <ul id="timeLineRetiros" class="timeline box asScrollable asScrollable-container">
+                </ul>
+            </div>
+        </div>
+        <!-- /# card -->
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-title">
+
+                <h4>Top Depósitos </h4>
+                <i class="ti-crown"></i>
+            </div>
+            <div class="recent-comment m-t-15" id="top_ventas">
+                @* <div class="media">
+                <div class="media-left">
+                <a href="#"><img class="media-object" src="images/avatar/1.jpg" alt="..."></a>
+                </div>
+                <div class="media-body">
+                <h4 class="media-heading color-primary">john doe</h4>
+                <p>Cras sit amet nibh libero, in gravida nulla.</p>
+                <p class="comment-date">10 min ago</p>
+                </div>
+                </div>*@
+            </div>
+        </div>
+        <!-- /# card -->
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        var arrayNombClavSuc = [,];
+        $(document).ready(function() {
+            //      GRAFICAS HOME       //
+            //-------------------------------------------------------------------------------------------------------//
+            //Depositos de sucursal
+             Holder.run();
+            $('.box').asScrollable();
+            ReportesDepositos();
+            UltimosDepositos();
+            UltimosRetiros();
+            sucursalestop();
+            //var items = document.querySelectorAll("#user-activity .nav-tabs .nav-item");
+            //items.forEach(function(item, index) {
+            //    item.addEventListener("click", function() {
+            //        config.data.datasets[0].data = activityData[index].first;
+            //        config.data.datasets[1].data = activityData[index].second;
+            //        myLine.update();
+            //    });
+            //});
+
+            //-------------------------------------------------------------------------------------------------------//
+        });
+
+        //funciones
+        function ReportesDepositos() {
+            $.ajax({
+                url: '@Url.Action("ReporteDepositos", "Home")',
+                type: "GET",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function(data) {
+
+                    /*console.log(data);*/
+                    var arrayCantidadAnterior = [];
+                    var arrayMeses = [];
+                    var arrayCantidad = [];
+
+                    var backcolor = [];
+                    for (var i = 0; i < data.length; i++) {
+
+                        /*console.log(data[i].mes)*/
+                        arrayMeses.push(data[i].nombre_Sucursal);
+                        // $("#dpdownz").append("<a class='dropdown-item' onClic='depositosdiaxsucursal(" + data[i].Nombre_Sucursal + ")' >" + data[i].Nombre_Sucursal + "</a>");
+                        arrayCantidad.push(data[i].cantidad_Depositos_MesActual)
+                        arrayCantidadAnterior.push(data[i].cantidad_Depositos_MesAnterior)
+                        arrayNombClavSuc.push([data[i].nombre_Sucursal, data[i].clave_Sucursal]);
+                        const r = Math.floor(Math.random() * 255);
+                        const g = Math.floor(Math.random() * 255);
+                        const b = Math.floor(Math.random() * 255);
+                        backcolor.push('rgba(' + r + ',' + g + ',' + b + ',0.8)');
+                    }
+
+                    console.log("---------------------------")
+                    console.log("------meses ------------")
+                    console.log(arrayMeses)
+                    console.log("---------------------------")
+                    console.log("------cantidad ------------")
+                    console.log(arrayCantidad);
+                    console.log(arrayCantidadAnterior);
+                    console.log(arrayNombClavSuc);
+
+                    //----------------------------------------------------------------------------------
+                    var activity = document.getElementById("activity");
+                    if (activity !== null) {
+
+                        var config = {
+                            // The type of chart we want to create
+                            type: "line",
+                            // The data for our dataset
+                            data: {
+                                labels: arrayMeses,
+                                datasets: [
+                                    {
+                                        label: "Actual",
+                                        backgroundColor: "transparent",
+                                        borderColor: "#91a7d9",
+                                        data: arrayCantidad,
+                                        lineTension: 0,
+                                        pointRadius: 5,
+                                        pointBackgroundColor: "rgba(255,255,255,1)",
+                                        pointHoverBackgroundColor: "rgba(255,255,255,1)",
+                                        pointBorderWidth: 2,
+                                        pointHoverRadius: 7,
+                                        pointHoverBorderWidth: 1
+                                    },
+                                    {
+                                        label: "Anterior",
+                                        backgroundColor: "transparent",
+                                        borderColor: "#cfaf68",
+                                        data: arrayCantidadAnterior,
+                                        lineTension: 0,
+                                        borderDash: [10, 5],
+                                        //borderWidth: 1,
+                                        pointRadius: 5,
+                                        pointBackgroundColor: "rgba(255,255,255,1)",
+                                        pointHoverBackgroundColor: "rgba(255,255,255,1)",
+                                        pointBorderWidth: 2,
+                                        pointHoverRadius: 7,
+                                        pointHoverBorderWidth: 1
+                                    }
+                                ]
+                            },
+                            // Configuration options go here
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+
+                                legend: {
+                                    display: true,
+
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Depósitos Acumulados Mes Actual vs Mes Anterior',
+                                    font: {
+                                        size: 32,
+                                        family: 'tahoma',
+                                        weight: 'normal',
+                                        style: 'italic'
+                                    }
+                                },
+                                scales: {
+                                    xAxes: [
+                                        {
+                                            gridLines: {
+                                                display: false,
+                                            },
+                                            ticks: {
+                                                fontColor: "#8a909d", // this here
+                                                fontSize: 11,
+                                            },
+                                        }
+                                    ],
+                                    yAxes: [
+                                        {
+                                            gridLines: {
+                                                fontColor: "#8a909d",
+                                                fontFamily: "Roboto, sans-serif",
+                                                display: false,
+                                                color: "#eee",
+                                                zeroLineColor: "#eee"
+                                            },
+                                            ticks: {
+                                                callback: function(tick, index, array) {
+                                                    return tick.toLocaleString("en-US", { style: "currency", currency: "USD" });
+                                                },
+                                                stepSize: @Data.Escala_2,
+                                                //stepSize: 2000000,
+                                                fontColor: "#8a909d",
+                                                fontFamily: "Roboto, sans-serif"
+                                            }
+                                        }
+                                    ]
+                                },
+                                onClick: function(e) {
+                                    //debugger;
+                                    //var activePointLabel = this.getElementsAtEvent(e)[0].label;
+                                    //console.log(this.getElementsAtEvent(e)[0]);
+                                    //console.log(this.getElementsAtEvent(e)[0]._index);
+                                    console.log(this.getElementsAtEvent(e)[0]._chart.config.data.labels[this.getElementsAtEvent(e)[0]._index]);
+                                    var sucursal = this.getElementsAtEvent(e)[0]._chart.config.data.labels[this.getElementsAtEvent(e)[0]._index]
+                                    console.log(arrayNombClavSuc.filter(d => d[0] == sucursal)[0][1]);
+                                    var clave_sucursal = arrayNombClavSuc.filter(d => d[0] == sucursal)[0][1];
+                                    if (clave_sucursal != "") {
+
+                                        window.location.href = '/CajerosInteligentes/Branches/CustomerMonthyReport/?Clave_Sucursal=' + clave_sucursal + '&status=TD';
+                                    }
+                                    //console.log();
+                                    //alert(activePointLabel);
+                                },
+                                tooltips: {
+                                    mode: "index",
+                                    callbacks: {
+                                        label: function(tooltipItem, data) {
+                                            return (
+                                                tooltipItem.yLabel.toLocaleString("en-US", { style: "currency", currency: "USD" })
+
+                                            );
+                                        },
+                                    },
+                                    intersect: false,
+                                    titleFontColor: "#888",
+                                    bodyFontColor: "#555",
+                                    titleFontSize: 12,
+                                    bodyFontSize: 15,
+                                    backgroundColor: "rgba(256,256,256,0.95)",
+                                    displayColors: true,
+                                    xPadding: 10,
+                                    yPadding: 7,
+                                    borderColor: "rgba(220, 220, 220, 0.9)",
+                                    borderWidth: 2,
+                                    caretSize: 6,
+                                    caretPadding: 5
+                                }
+                            }
+                        };
+
+                        var ctx = document.getElementById("activity").getContext("2d");
+                        var myLine = new Chart(ctx, config);
+
+                    }
+
+
+                    //--------------------------------------------------------------------------------------
+
+                },
+                error: function(error) {
+                    console.log(error)
+                }
+            });
+        }
+
+        function sucursalestop() {
+            $.ajax({
+                url: '@Url.Action("SucursalesTop", "Home")',
+                type: "get",
+                datatype: "json",
+                contenttype: "application/json; charset=utf-8",
+                success: function(data) {
+
+                    /*console.log(data);*/
+
+                    var arraymeses = [];
+                    var arraycantidad = [];
+                    var backcolor = [];
+                    for (var i = 0; i < data.length; i++) {
+
+                        /*console.log(data[i].mes)*/
+                        arraymeses.push(data[i].nombre_Sucursal)
+                        arraycantidad.push(data[i].impote)
+                        AddToTopSucursales(data[i].nombre_Sucursal, data[i].impote, i);
+                        //const r = math.floor(math.random() * 255);
+                        //const g = math.floor(math.random() * 255);
+                        //const b = math.floor(math.random() * 255);
+                        //backcolor.push('rgba(' + r + ',' + g + ',' + b + ',0.8)');
+                    }
+                    //depositosdiaxsucursal($("#h4_0").text());
+                    console.log("---------------------------")
+                    console.log("------mes sucursales top ------------")
+                    console.log(arraymeses)
+                    console.log("---------------------------")
+                    console.log("------cantidad sucursales top------------")
+                    console.log(arraycantidad)
+
+                    var controlbar1 = document.getelementbyid("mylinechart");
+
+                },
+                error: function(error) {
+                    console.log(error)
+                },
+                complete: function() {
+
+                }
+            });
+
+
+        }
+
+        function UltimosDepositos() {
+            $.ajax({
+                url: '@Url.Action("UltimosMovimientosDepositos", "Home")',
+                type: "GET",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function(data) {
+
+                    /*console.log(data);*/
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i].status =="Deposito" && (parseInt(data[i].impote.replace(",",""))>=5000))
+                        { 
+                             var datos = data[i].nombre_Sucursal + " Se realizo " + data[i].status + " de <p class='color-sissa-red'> $" + data[i].impote+"</p>";
+                            AddUltimosDepositosRetiros(datos, data[i].status, data[i].fecha);
+                        }
+                        else
+                        {
+                             var datos = data[i].nombre_Sucursal + " Se realizo " + data[i].status + " de $" + data[i].impote;
+                            AddUltimosDepositosRetiros(datos, data[i].status, data[i].fecha);
+                        }
+                       
+                       
+                    }
+
+
+                },
+                error: function(error) {
+                    console.log(error)
+                },
+                complete: function() {
+
+                }
+            });
+        }
+
+         function UltimosRetiros() {
+            $.ajax({
+                url: '@Url.Action("UltimosMovimientosRetiros", "Home")',
+                type: "GET",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function(data) {
+
+                    /*console.log(data);*/
+                    for (var i = 0; i < data.length; i++) {
+                        var datos = data[i].nombre_Sucursal + " se realizo " + data[i].status + " de $" + data[i].impote;
+                        AddUltimosDepositosRetiros(datos, data[i].status, data[i].fecha);
+                    }
+
+
+                },
+                error: function(error) {
+                    console.log(error)
+                },
+                complete: function() {
+
+                }
+            });
+        }
+
+        function AddUltimosDepositosRetiros(data, iconstat, fecha) {
+            //<li>
+            //             <div class="timeline-badge primary"><i class="fa fa-smile-o"></i></div>
+            //             <div class="timeline-panel">
+            //                 <div class="timeline-heading">
+            //                     <h5 class="timeline-title">School promote video sharing</h5>
+            //                 </div>
+            //                 <div class="timeline-body">
+            //                     <p>10 minutes ago</p>
+            //                 </div>
+            //             </div>
+            //         </li>
+
+            var li = $("<li>");
+            var div_timeline_badge = $("<div>");
+
+            var icon = $("<i>");
+            if (iconstat == "Deposito") {
+                div_timeline_badge.addClass("timeline-badge sissa-success");
+                icon.addClass("fa ti-money");
+            } else {
+                div_timeline_badge.addClass("timeline-badge sissa-warning");
+                icon.addClass("fa ti-money");
+            }
+
+            div_timeline_badge.append(icon);
+            li.append(div_timeline_badge);
+
+            var div_timeline_panel = $("<div>");
+            div_timeline_panel.addClass("timeline-panel");
+            var div_timeline_heading = $("<div>");
+            div_timeline_heading.addClass("timeline-heading");
+            var h5_timeline_title = $("<h5>");
+            h5_timeline_title.addClass("timeline-title");
+            h5_timeline_title.append(data);
+
+            div_timeline_heading.append(h5_timeline_title);
+
+            div_timeline_panel.append(div_timeline_heading);
+
+            ////////////////////////////////////////
+            var div_timeline_body = $("<div>");
+            div_timeline_body.addClass("timeline-body");
+            var p = $("<p>")
+            p.text(fecha);
+            div_timeline_body.append(p);
+            div_timeline_panel.append(div_timeline_body);
+            li.append(div_timeline_panel);
+            if (iconstat == "Deposito") {
+                $("#timeLineDepositos").append(li);
+            }
+            else {
+                $("#timeLineRetiros").append(li);
+            }
+
+        }
+
+        function AddToTopSucursales(sucursal, cantidad, id) {
+            //<div class="media">
+            //        <div class="media-left">
+            //            <a href="#"><img class="media-object" src="images/avatar/1.jpg" alt="..."></a>
+            //        </div>
+            //        <div class="media-body">
+            //            <h4 class="media-heading color-primary">john doe</h4>
+            //            <p>Cras sit amet nibh libero, in gravida nulla.</p>
+            //            <p class="comment-date">10 min ago</p>
+            //        </div>
+            //    </div>
+
+            var div_media = $("<div>");
+            div_media.addClass("media");
+
+            var div_media_left = $("<div>");
+            div_media_left.addClass("media-left");
+            var icon = $("<i>");
+            icon.addClass("ti-crown");
+            div_media_left.append(icon);
+
+            div_media.append(div_media_left);
+
+            var div_media_body = $("<div>");
+            div_media_body.addClass("media-body");
+
+            var h4_media_heading = $("<h4>");
+            h4_media_heading.addClass("media-heading color-sissa-black");
+
+            h4_media_heading.text(sucursal);
+
+            var p = $("<p>");
+            p.addClass("comment-date");
+            p.text(cantidad);
+
+            div_media_body.append(h4_media_heading);
+            div_media_body.append(p);
+
+            div_media.append(div_media_body);
+
+
+
+            $("#top_ventas").append(div_media);
+            //jQuery("#cardDepositosxMes").append(divprogressbar);
+        }
+
+        function number_format(number, decimals, dec_point, thousands_sep) {
+            // *     example: number_format(1234.56, 2, ',', ' ');
+            // *     return: '1 234,56'
+            number = (number + '').replace(',', '').replace(' ', '');
+            var n = !isFinite(+number) ? 0 : +number,
+                prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+                sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
+                dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+                s = '',
+                toFixedFix = function(n, prec) {
+                    var k = Math.pow(10, prec);
+                    return '' + Math.round(n * k) / k;
+                };
+            // Fix for IE parseFloat(0.55).toFixed(0) = 0;
+            s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
+            if (s[0].length > 3) {
+                s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+            }
+            if ((s[1] || '').length < prec) {
+                s[1] = s[1] || '';
+                s[1] += new Array(prec - s[1].length + 1).join('0');
+            }
+            return s.join(dec);
+        }
+
+    </script>
+}
+

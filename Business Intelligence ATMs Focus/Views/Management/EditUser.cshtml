@@ -1,0 +1,48 @@
+﻿@model Usuario
+@{
+}
+<div class="row">
+    <div class="card">
+        <form asp-controller="Management" asp-action="EditUser"  method="post" >
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input type="text" asp-for="Nombre_Usuario" class="form-control" placeholder="John">
+                    </div>
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input type="text" asp-for="Nombre_Usuario" class="form-control" placeholder="John">
+                    </div>
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <select type="text" asp-for="Nivel" class="form-control" asp-items="@(new SelectList(ViewBag.DrpDwnListNivel, nameof(ViewBag.DrpDwnListNivel.Text), nameof(ViewBag.DrpDwnList.Text),ViewBag.DrpDwnListNivel.Value))"></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Cliente</label>
+                        <select class="form-control" asp-for="Clave_Cliente" asp-items="@(new SelectList(ViewBag.DrpDwnListSuc, nameof(ViewBag.DrpDwnList.Clave_Sucursal), nameof(ViewBag.DrpDwnList.Nombre_Sucursal),Model.Clave_Cliente))"></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Correo Electronico</label>
+                        <input type="text" asp-for="Mail" class="form-control" placeholder="John">
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Nombre Sesion</label>
+                        <input type="text" asp-for="Nombre_Sesion" class="form-control" placeholder="Nombre Sesion">
+                    </div>
+                    <div class="form-group">
+                        <label>Contraseña</label>
+                        <input type="password" asp-for="Password" value="@Model.Password"  class="form-control" placeholder="Contraseña">
+                    </div>
+                </div>
+            </div>
+            <div class="form-footer pt-5 border-top">
+                <button type="submit" class="btn btn-sissa btn-pill">Guardar</button>
+            </div>
+        </form>
+    </div>
+
+</div>

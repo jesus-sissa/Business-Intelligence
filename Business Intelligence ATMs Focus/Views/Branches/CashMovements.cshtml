@@ -1,0 +1,167 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    List<Sucursales> lista = Data._Sucursales;
+
+    var clv = ViewBag.Clave_Sucursal;
+    var sucursal = lista.Find(x => x.Clave_Sucursal == Convert.ToString(ViewBag.Clave_Sucursal));
+}
+<div class="row">
+    <div class="col-lg-8 p-r-0 title-margin-right">
+        <div class="page-header">
+            <div class="page-title">
+                <h1 class="color-sissa-brown"><span>@sucursal.Nombre_Sucursal</span></h1>
+            </div>
+        </div>
+    </div>
+    <!-- /# column -->
+    <div class="col-lg-4 p-l-0 title-margin-left">
+        <div class="page-header">
+            <div class="page-title">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Movimientos</a></li>
+                    
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!-- /# column -->
+</div>
+<div class="row m-4">
+    <div class="row m-0">
+        <div class="col-12">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Fecha inicio</span>
+                </div>
+                <input type="date" autocomplete="off" id="Inicio" class="form-control alert" />
+            </div>
+        </div>
+    </div>
+    <div class="row m-0">
+        <div class="col-12">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Fecha fin</span>
+                </div>
+                <input type="date" autocomplete="off" id="Fin" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row m-0">
+        <div class="col-12">
+            <div class="input-group mb-3">
+                @*<a class="btn btn-primary btn-flat btn-addon btn-lg m-b-10 m-l-5" id="Search"><i class="ti-search">Consultar</a>*@
+                <button type="button" class="btn btn-sissa btn-flat btn-addon btn-lg m-b-10 m-l-5" id="Search">Consultar <i class="ti-search"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row m-4">
+    <div class="col-sm-12">
+
+        <div class="card">
+            <div class="card-header">
+                <h5 id="TotalGeneral"></h5>
+            </div>
+            <div class="card-body">
+                <table class="display responsive nowrap" id="myTable" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                            <th>Usuario realizó</th>
+                            <th>Importe deposito</th>
+                            <th>Importe retiro</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+@section scripts{
+
+    <script>
+        var tabla_persona;
+        $(document).ready(function() {
+            tabla_persona = $('#myTable').DataTable({
+                "ajax": {
+                    "url": '@Url.Action("ListMovements", "Branches")' + "?Clave_Sucursal=-1&Fecha_Inicio=-1&Fecha_Fin=-1",
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "fecha" },
+                    { "data": "hora" },
+                    { "data": "usuario_Registro" },
+                    { "data": "impoteDeposito" },
+                    { "data": "impoteRetiro" }
+
+                ],
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'excelHtml5',
+                        title: 'Excel',
+                        text: 'Export to excel'
+                        //Columns to export
+                        //exportOptions: {
+                        //     columns: [0, 1, 2, 3,4,5,6]
+                        // }
+                    }
+                ], "footerCallback": function(tfoot, data, start, end, display) {
+                    //Get data here
+                    console.log(data);
+                    //Do whatever you want. Example:
+                    var totalAmount = 0;
+                    for (var i = 0; i < data.length; i++) {
+                        console.log(data[i].impote.replace("$", ""));
+                        console.log(parseInt(data[i].impote.replace("$", "").replace(",", "")));
+                        totalAmount += parseInt(data[i].impote.replace("$", "").replace(",", ""));
+                    }
+                    console.log("--------------");
+                    console.log(ToNumeric(totalAmount));
+                    $("#TotalGeneral").html("Total:" + ToNumeric(totalAmount));
+                }
+
+            });
+
+
+            $("#Search").on("click", function() {
+                if ($("#Inicio").val().length == 0 || $("#Fin").val().length == 0) {
+                    /*swal("Hello world!");*/
+                    swal({
+                        button: false,
+                        text: "Seleccione una fecha inicio y una fecha fin !",
+                        timer: 1500
+                    });
+                }
+
+                else {
+                    tabla_persona.ajax.url('@Url.Action("ListMovements", "Branches")' + "?Clave_Sucursal=" + @ViewBag.Clave_Sucursal + "&Fecha_Inicio=" + $("#Inicio").val() + "&Fecha_Fin=" + $("#Fin").val()).load();
+                }
+            });
+
+        });
+
+
+
+
+        let ToNumeric = (number => {
+            return number.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2 });
+        });
+    </script>
+}

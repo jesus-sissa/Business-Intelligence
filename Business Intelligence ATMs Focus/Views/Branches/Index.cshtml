@@ -1,0 +1,292 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model List<Business_Intelligence_ATMs_Focus.Models.Sucursales>
+@{
+}
+<style>
+    .img-sissa-fluid {
+    max-width: 100%;
+   
+}
+    .stat-digit-min {
+        font-size: 25px;
+    }
+
+    .stat-widget-five .stat-heading {
+        text-align: left;
+        padding-left: 0px;
+        font-size: 20px;
+        font-weight: 200;
+    }
+
+    .mt-n8, .my-n8 {
+        margin-top: -2.0625rem !important;
+    }
+</style>
+@*@Html.Hidden("Get", Url.Action("GetSQL", "Sucursales"))*@
+<div class="row" id="principal">
+
+
+
+    @foreach (var item in Model)
+    {
+        @if (item.Minutos_desconexion > 10)
+        {
+            <div class="col-lg-6 col-xl-4 col-xxl-3">
+                <div class="card card-default mt-7">
+                    <div class="card-body text-center">
+                        <div class="d-block mb-2 mt-n8">
+                            <div class="image mb-3 d-inline-flex"  data-toggle="tooltip" title="@item.Alias">
+                                <img width="75px" height="75px" src="@item.Logo" class="img-sissa-fluid rounded-circle d-inline-block" style="border-style: solid; border-color:#686868" alt="Avatar Image">
+                               @* <div class="stat-widget-one">
+                                    <div class="stat-icon dib"> <i class="ti-power-off bg-sissa-red"></i></div>
+                                </div>*@
+                            </div>
+                        </div>
+                        <a title="@item.Nombre_Sucursal" href="@Url.Action("Detail", "Branches",new { Clave_Sucursal =@item.Clave_Sucursal,status="TD",alias=item.Alias })">
+                            <div class="stat-text">@item.Nombre_Sucursal</div>
+                        </a>
+
+                        @if (item.Dias_SinDepositar > 1)
+                        {
+                            <div class="stat-text">Necesita Revision</div>
+                        }
+                        else
+                        {
+                            <div class="stat-text">-- </div>
+                        }
+
+                        <div class="row justify-content-center">
+                            <div class="col-3 px-1" data-toggle="tooltip" title="Desconectado">
+                                <i class="fa fa-signal fa-2x" aria-hidden="true"></i>
+                            </div>
+
+                            @if (item.NumVal == 2)
+                            {
+                                <div class="col-3 px-1">
+                                    @if (item.Val1)
+                                    {
+                                        <i class="fa fa-hdd-o fa-2x" style="color:#6cd680" aria-hidden="true" data-toggle="tooltip" title="Activo"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="fa fa-hdd-o fa-2x" style="color:#e7d769" aria-hidden="true" data-toggle="tooltip" title="Desactivado"></i>
+                                    }
+
+                                </div>
+                                <div class="col-3 px-1">
+                                    @if (item.Val2)
+                                    {
+                                        <i class="fa fa-hdd-o fa-2x" style="color:#6cd680" aria-hidden="true" data-toggle="tooltip" title="Activo"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="fa fa-hdd-o fa-2x" style="color:#e7d769" aria-hidden="true" data-toggle="tooltip" title="Desactivado"></i>
+                                    }
+
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-3 px-1">
+                                    @if (item.Val1)
+                                    {
+                                        <i class="fa fa-hdd-o fa-2x" style="color:#6cd680" aria-hidden="true" data-toggle="tooltip" title="Activado"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="fa fa-hdd-o fa-2x" style="color:#e7d769" aria-hidden="true" data-toggle="tooltip" title="Desactivado"></i>
+                                    }
+
+                                </div>
+                            }
+                            <div class="col-3 px-1">
+                                <div class="stat-widget-one">
+                                    @if (item.Dias_SinDepositar == 0)
+                                    {
+                                        @*<i class="fa fa-refresh fa-spin fa-2x fa-fw" style="color:#6cd680" aria-hidden="true"></i>*@
+                                        <i class="fa fa-check-circle fa-2x fa-fw" style="color:#6cd680" aria-hidden="true" data-toggle="tooltip" title="Depositos al Corriente"></i>
+                                    }
+                                    else if (item.Dias_SinDepositar == 1)
+                                    {
+                                        <i class="fa fa-check-circle fa-spin fa-2x fa-fw" style="color:#e7d769" aria-hidden="true" data-toggle="tooltip" title="Solo Depositos del Dia de ayer"></i>
+                                    }
+                                    else if (item.Dias_SinDepositar > 1)
+                                    {
+                                        <i class="fa fa-check-circle-o fa-2x fa-fw" style="color:#d66c6c" aria-hidden="true" data-toggle="tooltip" title="Sin Depositar por mas de 2 Dias"></i>
+                                    }
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    }
+    @foreach (var item in Model)
+    {
+        if (item.Minutos_desconexion <= 10)
+        {
+            <div class="col-lg-6 col-xl-4 col-xxl-3">
+                <div class="card card-default mt-7">
+                    <div class="card-body text-center">
+                        <div class="d-block mb-2 mt-n8">
+                            <div class="image mb-3 d-inline-flex" data-toggle="tooltip" title="@item.Alias">
+                                <img width="75px" height="75px" src="@item.Logo"class="img-sissa-fluid rounded-circle d-inline-block" style="border-style: solid; border-color:#686868" alt="Avatar Image">
+                               @* <div class="stat-widget-one">
+                                    <div class="stat-icon dib"> <i class="ti-power-off bg-sissa-green"></i></div>
+                                </div>*@
+                            </div>
+                        </div>
+                        <a title="@item.Nombre_Sucursal" href="@Url.Action("Detail", "Branches",new { Clave_Sucursal =@item.Clave_Sucursal,status="TD",alias=item.Alias })">
+                            <div class="stat-text">@item.Nombre_Sucursal</div>
+                        </a>
+
+                        @if (item.Dias_SinDepositar > 1)
+                        {
+                            <div class="stat-text">Necesita Revision</div>
+                        }
+                        else
+                        {
+                            <div class="stat-text">-- </div>
+                        }
+
+                        <div class="row justify-content-center">
+                            <div class="col-3 px-1"  data-toggle="tooltip" title="Conectado" >
+                                <i class="fa fa-signal fa-2x" style="color:#6cd680" aria-hidden="true"></i>
+                            </div>
+
+                            @if (item.NumVal == 2)
+                            {
+                                <div class="col-3 px-1">
+                                    @if (item.Val1)
+                                    {
+                                        <i class="fa fa-hdd-o fa-2x" style="color:#6cd680" aria-hidden="true" data-toggle="tooltip" title="Activo" ></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="fa fa-hdd-o fa-2x" style="color:#e7d769" aria-hidden="true" data-toggle="tooltip" title="Desactivado" ></i>
+                                    }
+
+                                </div>
+                                <div class="col-3 px-1">
+                                    @if (item.Val2)
+                                    {
+                                        <i class="fa fa-hdd-o fa-2x" style="color:#6cd680" aria-hidden="true" data-toggle="tooltip" title="Activo"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="fa fa-hdd-o fa-2x" style="color:#e7d769" aria-hidden="true"data-toggle="tooltip" title="Desactivado"></i>
+                                    }
+
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-3 px-1">
+                                    @if (item.Val1)
+                                    {
+                                        <i class="fa fa-hdd-o fa-2x" style="color:#6cd680" aria-hidden="true" data-toggle="tooltip" title="Activo"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="fa fa-hdd-o fa-2x" style="color:#e7d769" aria-hidden="true" data-toggle="tooltip" title="Desactivado"></i>
+                                    }
+
+                                </div>
+                            }
+                            <div class="col-3 px-1">
+                                <div class="stat-widget-one">
+                                    @if (item.Dias_SinDepositar == 0)
+                                    {
+                                        @*<i class="fa fa-refresh fa-spin fa-2x fa-fw" style="color:#6cd680" aria-hidden="true"></i>*@
+                                        <i class="fa fa-check-circle fa-2x fa-fw" style="color:#6cd680" aria-hidden="true" data-toggle="tooltip" title="Depositos al Corriente"></i>
+                                    }
+                                    else if (item.Dias_SinDepositar == 1)
+                                    {
+                                        <i class="fa fa-check-circle fa-2x fa-fw" style="color:#e7d769" aria-hidden="true" data-toggle="tooltip" title="Solo Depositos del Dia de ayer"></i>
+                                    }
+                                    else if (item.Dias_SinDepositar > 1)
+                                    {
+                                        <i class="fa fa-check-circle-o fa-2x fa-fw" style="color:#d66c6c" aria-hidden="true" data-toggle="tooltip" title="Sin Depositar por mas de 2 Dias"></i>
+                                    }
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+
+    }
+</div>
+
+
+
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function() {
+            if (@ViewBag.Revisar > 0) {
+
+                toastr.error("@ViewBag.Revisar Sucursales No Sincronizan Depositos", 'Error en Sincronizacion de Depositos', {
+                    "positionClass": "toast-top-full-width",
+                    timeOut: 5000,
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": true,
+                    "progressBar": true,
+                    "preventDuplicates": true,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut",
+                    "tapToDismiss": false
+
+                });
+            }
+
+            if (@ViewBag.Desconectadas > 0) {
+
+                toastr.error("@ViewBag.Desconectadas Sucursales Desconectadas", 'Error en Conexion de Sucursales', {
+                    "positionClass": "toast-top-full-width",
+                    timeOut: 5000,
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": true,
+                    "progressBar": true,
+                    "preventDuplicates": true,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut",
+                    "tapToDismiss": false
+
+                });
+            }
+
+
+
+        });
+    </script>
+}
+
+
+
+

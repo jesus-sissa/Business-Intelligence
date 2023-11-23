@@ -1,0 +1,173 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+    string[] Cadena = Model.Cadena.Split(',');
+                Cadena[0] = Tools.Decode(Cadena[0]);
+                Cadena[1] = Tools.Decode(Cadena[1]);
+                Cadena[2] = Tools.Decode(Cadena[2]);
+                Cadena[3] = Tools.Decode(Cadena[3]);
+}
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="user-profile">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="user-profile-name">
+                                <i class="ti-user"></i>  @Model.Nombre_Usuario
+                            </div>
+                            <div class="user-Location">
+                                @if (Model.Status == "A")
+                                {
+                                    <span class="badge badge-success">Activo</span>
+                                    
+                                }
+                                else
+                                {
+                                    <span class="badge badge-danger">Activo</span>
+                                }
+
+                            </div>
+                             <div class="user-Location">
+                                  <span class="badge badge-primary">
+                                      <a class="color-white" href="@Url.Action("EditUser","Management",new{id=Model.Id_Usuario})"> Editar <i class="ti-pencil-alt"></i></a>
+                                  </span>
+                                  
+                             </div>
+                           
+                            <div class="user-job-title">
+                                @if (Model.Nivel == 1)
+                                {
+                                    <span class="badge badge-primary">Administrador</span>
+                                }
+                                else if (Model.Nivel == 2)
+                                {
+                                    <span class="badge badge-warning">Soporte</span>
+                                }
+                                else if (Model.Nivel == 3)
+                                {
+                                    <span class="badge badge-success">Usuario</span>
+                                }
+                                
+                            </div>
+                            <div class="user-send-message">
+                            </div>
+                            <div class="custom-tab user-profile-tab">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active">
+                                        @*<a href="#1" aria-controls="1" role="tab" data-toggle="tab">Informacion Usuario</a>*@
+                                    </li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane active" id="1">
+                                        <div class="contact-information">
+                                            <h4>Informacion</h4>
+                                            <div class="phone-content">
+                                                <span class="contact-title">Cliente:</span>
+                                                <span class="phone-number">@Model.Nombre_Comercial</span>
+                                            </div>
+                                            <div class="phone-content">
+                                                <span class="contact-title">Fecha Expiracion:</span>
+                                                <span class="phone-number">@Model.Fecha_Expira</span>
+                                            </div>
+                                            <div class="address-content">
+                                                <span class="contact-title">Clave Unica:</span>
+                                                <span class="mail-address">@Model.Clave_unica</span>
+                                            </div>
+
+                                            <div class="website-content">
+                                                <span class="contact-title">Correo Electronico:</span>
+                                                <span class="contact-website">@Model.Mail</span>
+                                            </div>
+                                            @*  <div class="skype-content">
+                                            <span class="contact-title">Skype:</span>
+                                            <span class="contact-skype">Admin Board</span>
+                                            </div>*@
+                                        </div>
+                                        <div class="basic-information">
+                                            <h4>Login Informacion</h4> 
+                                            <div class="birthday-content">
+                                                <span class="contact-title">Nombre Sesion:</span>
+                                                <span class="birth-date">@Model.Nombre_Sesion </span>
+                                            </div>
+                                            <div class="gender-content">
+                                                <span class="contact-title">Contraseña:</span>
+                                                <span class="gender">@Model.Password</span>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="custom-tab user-profile-tab">
+                    
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="1">
+                            <div class="contact-information">
+                                <h4>Informacion de Conexion</h4>
+                                <div class="phone-content">
+                                    <span class="contact-title">Data Source:</span>
+                                    <span class="phone-number">@Cadena[0]</span>
+                                </div>
+                                <div class="address-content">
+                                    <span class="contact-title">Initial Catalog:</span>
+                                    <span class="mail-address">@Cadena[1]</span>
+                                </div>
+
+                                <div class="website-content">
+                                    <span class="contact-title">User ID:</span>
+                                    <span class="contact-website">@Cadena[2]</span>
+                                </div>
+                                  <div class="skype-content">
+                                <span class="contact-title">Password:</span>
+                                <span class="contact-skype">@Cadena[3]</span>
+                                </div>
+                            </div>
+                            @*<div class="basic-information">
+                                <h4>Login Informacion</h4>
+                                <div class="birthday-content">
+                                    <span class="contact-title">Nombre Sesion:</span>
+                                    <span class="birth-date">@Model.Nombre_Sesion </span>
+                                </div>
+                                <div class="gender-content">
+                                    <span class="contact-title">Contraseña:</span>
+                                    <span class="gender">@Model.Password</span>
+                                </div>
+                                <div class="gender-content">
+                                    <span class="contact-title">Role:</span>
+                                    <span class="gender">@Model.Password</span>
+                                </div>
+                            </div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+            $(".dropdown-toggle").dropdown();
+        });
+
+    </script>
+}
