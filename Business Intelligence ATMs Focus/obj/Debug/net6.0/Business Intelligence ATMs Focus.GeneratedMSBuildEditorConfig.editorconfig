@@ -5,133 +5,132 @@ build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
-build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Business_Intelligence_ATMs_Focus
 build_property.RootNamespace = Business_Intelligence_ATMs_Focus
-build_property.ProjectDir = D:\REPOSITORY\SOURCE CODE\Business Intelligence\Business Intelligence ATMs Focus\
+build_property.ProjectDir = C:\Users\juan.mora\Documents\December\DashboardBox\Business-Intelligence\Business Intelligence ATMs Focus\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\REPOSITORY\SOURCE CODE\Business Intelligence\Business Intelligence ATMs Focus
+build_property.MSBuildProjectDirectory = C:\Users\juan.mora\Documents\December\DashboardBox\Business-Intelligence\Business Intelligence ATMs Focus
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/REPOSITORY/SOURCE CODE/Business Intelligence/Business Intelligence ATMs Focus/Views/Branches/CashDeposits.cshtml]
+[C:/Users/juan.mora/Documents/December/DashboardBox/Business-Intelligence/Business Intelligence ATMs Focus/Views/Branches/CashDeposits.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhbmNoZXNcQ2FzaERlcG9zaXRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/REPOSITORY/SOURCE CODE/Business Intelligence/Business Intelligence ATMs Focus/Views/Branches/CashMovements.cshtml]
+[C:/Users/juan.mora/Documents/December/DashboardBox/Business-Intelligence/Business Intelligence ATMs Focus/Views/Branches/CashMovements.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhbmNoZXNcQ2FzaE1vdmVtZW50cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/REPOSITORY/SOURCE CODE/Business Intelligence/Business Intelligence ATMs Focus/Views/Branches/CashWithdrawal.cshtml]
+[C:/Users/juan.mora/Documents/December/DashboardBox/Business-Intelligence/Business Intelligence ATMs Focus/Views/Branches/CashWithdrawal.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhbmNoZXNcQ2FzaFdpdGhkcmF3YWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/REPOSITORY/SOURCE CODE/Business Intelligence/Business Intelligence ATMs Focus/Views/Branches/CustomerBranches.cshtml]
+[C:/Users/juan.mora/Documents/December/DashboardBox/Business-Intelligence/Business Intelligence ATMs Focus/Views/Branches/CustomerBranches.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhbmNoZXNcQ3VzdG9tZXJCcmFuY2hlcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/REPOSITORY/SOURCE CODE/Business Intelligence/Business Intelligence ATMs Focus/Views/Branches/CustomerDetail.cshtml]
+[C:/Users/juan.mora/Documents/December/DashboardBox/Business-Intelligence/Business Intelligence ATMs Focus/Views/Branches/CustomerDetail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhbmNoZXNcQ3VzdG9tZXJEZXRhaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/REPOSITORY/SOURCE CODE/Business Intelligence/Business Intelligence ATMs Focus/Views/Branches/CustomerMonthyReport.cshtml]
+[C:/Users/juan.mora/Documents/December/DashboardBox/Business-Intelligence/Business Intelligence ATMs Focus/Views/Branches/CustomerMonthyReport.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhbmNoZXNcQ3VzdG9tZXJNb250aHlSZXBvcnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/REPOSITORY/SOURCE CODE/Business Intelligence/Business Intelligence ATMs Focus/Views/Branches/Detail.cshtml]
+[C:/Users/juan.mora/Documents/December/DashboardBox/Business-Intelligence/Business Intelligence ATMs Focus/Views/Branches/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhbmNoZXNcRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/REPOSITORY/SOURCE CODE/Business Intelligence/Business Intelligence ATMs Focus/Views/Branches/Index.cshtml]
+[C:/Users/juan.mora/Documents/December/DashboardBox/Business-Intelligence/Business Intelligence ATMs Focus/Views/Branches/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhbmNoZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/REPOSITORY/SOURCE CODE/Business Intelligence/Business Intelligence ATMs Focus/Views/Branches/IndexPrb.cshtml]
+[C:/Users/juan.mora/Documents/December/DashboardBox/Business-Intelligence/Business Intelligence ATMs Focus/Views/Branches/IndexPrb.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhbmNoZXNcSW5kZXhQcmIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/REPOSITORY/SOURCE CODE/Business Intelligence/Business Intelligence ATMs Focus/Views/Forbidden/Error.cshtml]
+[C:/Users/juan.mora/Documents/December/DashboardBox/Business-Intelligence/Business Intelligence ATMs Focus/Views/Forbidden/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9yYmlkZGVuXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/REPOSITORY/SOURCE CODE/Business Intelligence/Business Intelligence ATMs Focus/Views/Forbidden/Illegal.cshtml]
+[C:/Users/juan.mora/Documents/December/DashboardBox/Business-Intelligence/Business Intelligence ATMs Focus/Views/Forbidden/Illegal.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9yYmlkZGVuXElsbGVnYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/REPOSITORY/SOURCE CODE/Business Intelligence/Business Intelligence ATMs Focus/Views/Home/Index.cshtml]
+[C:/Users/juan.mora/Documents/December/DashboardBox/Business-Intelligence/Business Intelligence ATMs Focus/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/REPOSITORY/SOURCE CODE/Business Intelligence/Business Intelligence ATMs Focus/Views/Home/Privacy.cshtml]
+[C:/Users/juan.mora/Documents/December/DashboardBox/Business-Intelligence/Business Intelligence ATMs Focus/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/REPOSITORY/SOURCE CODE/Business Intelligence/Business Intelligence ATMs Focus/Views/Inquiries/Deposits.cshtml]
+[C:/Users/juan.mora/Documents/December/DashboardBox/Business-Intelligence/Business Intelligence ATMs Focus/Views/Inquiries/Deposits.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5xdWlyaWVzXERlcG9zaXRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/REPOSITORY/SOURCE CODE/Business Intelligence/Business Intelligence ATMs Focus/Views/Inquiries/Movements.cshtml]
+[C:/Users/juan.mora/Documents/December/DashboardBox/Business-Intelligence/Business Intelligence ATMs Focus/Views/Inquiries/Movements.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5xdWlyaWVzXE1vdmVtZW50cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/REPOSITORY/SOURCE CODE/Business Intelligence/Business Intelligence ATMs Focus/Views/Inquiries/Withdrawal.cshtml]
+[C:/Users/juan.mora/Documents/December/DashboardBox/Business-Intelligence/Business Intelligence ATMs Focus/Views/Inquiries/Withdrawal.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5xdWlyaWVzXFdpdGhkcmF3YWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/REPOSITORY/SOURCE CODE/Business Intelligence/Business Intelligence ATMs Focus/Views/Management/Clients.cshtml]
+[C:/Users/juan.mora/Documents/December/DashboardBox/Business-Intelligence/Business Intelligence ATMs Focus/Views/Management/Clients.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFuYWdlbWVudFxDbGllbnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/REPOSITORY/SOURCE CODE/Business Intelligence/Business Intelligence ATMs Focus/Views/Management/EditUser.cshtml]
+[C:/Users/juan.mora/Documents/December/DashboardBox/Business-Intelligence/Business Intelligence ATMs Focus/Views/Management/EditUser.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFuYWdlbWVudFxFZGl0VXNlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/REPOSITORY/SOURCE CODE/Business Intelligence/Business Intelligence ATMs Focus/Views/Management/Users.cshtml]
+[C:/Users/juan.mora/Documents/December/DashboardBox/Business-Intelligence/Business Intelligence ATMs Focus/Views/Management/Users.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFuYWdlbWVudFxVc2Vycy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/REPOSITORY/SOURCE CODE/Business Intelligence/Business Intelligence ATMs Focus/Views/Management/ViewUser.cshtml]
+[C:/Users/juan.mora/Documents/December/DashboardBox/Business-Intelligence/Business Intelligence ATMs Focus/Views/Management/ViewUser.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFuYWdlbWVudFxWaWV3VXNlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/REPOSITORY/SOURCE CODE/Business Intelligence/Business Intelligence ATMs Focus/Views/Shared/Error.cshtml]
+[C:/Users/juan.mora/Documents/December/DashboardBox/Business-Intelligence/Business Intelligence ATMs Focus/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/REPOSITORY/SOURCE CODE/Business Intelligence/Business Intelligence ATMs Focus/Views/Shared/_header.cshtml]
+[C:/Users/juan.mora/Documents/December/DashboardBox/Business-Intelligence/Business Intelligence ATMs Focus/Views/Shared/_header.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9oZWFkZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/REPOSITORY/SOURCE CODE/Business Intelligence/Business Intelligence ATMs Focus/Views/Shared/_layoutLogin.cshtml]
+[C:/Users/juan.mora/Documents/December/DashboardBox/Business-Intelligence/Business Intelligence ATMs Focus/Views/Shared/_layoutLogin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9sYXlvdXRMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/REPOSITORY/SOURCE CODE/Business Intelligence/Business Intelligence ATMs Focus/Views/Shared/_scripts.cshtml]
+[C:/Users/juan.mora/Documents/December/DashboardBox/Business-Intelligence/Business Intelligence ATMs Focus/Views/Shared/_scripts.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9zY3JpcHRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/REPOSITORY/SOURCE CODE/Business Intelligence/Business Intelligence ATMs Focus/Views/Shared/_sidebar.cshtml]
+[C:/Users/juan.mora/Documents/December/DashboardBox/Business-Intelligence/Business Intelligence ATMs Focus/Views/Shared/_sidebar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9zaWRlYmFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/REPOSITORY/SOURCE CODE/Business Intelligence/Business Intelligence ATMs Focus/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/juan.mora/Documents/December/DashboardBox/Business-Intelligence/Business Intelligence ATMs Focus/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/REPOSITORY/SOURCE CODE/Business Intelligence/Business Intelligence ATMs Focus/Views/Users/Login.cshtml]
+[C:/Users/juan.mora/Documents/December/DashboardBox/Business-Intelligence/Business Intelligence ATMs Focus/Views/Users/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/REPOSITORY/SOURCE CODE/Business Intelligence/Business Intelligence ATMs Focus/Views/_ViewImports.cshtml]
+[C:/Users/juan.mora/Documents/December/DashboardBox/Business-Intelligence/Business Intelligence ATMs Focus/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/REPOSITORY/SOURCE CODE/Business Intelligence/Business Intelligence ATMs Focus/Views/_ViewStart.cshtml]
+[C:/Users/juan.mora/Documents/December/DashboardBox/Business-Intelligence/Business Intelligence ATMs Focus/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/REPOSITORY/SOURCE CODE/Business Intelligence/Business Intelligence ATMs Focus/Views/Shared/_Layout.cshtml]
+[C:/Users/juan.mora/Documents/December/DashboardBox/Business-Intelligence/Business Intelligence ATMs Focus/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-x6cgob5zq3
