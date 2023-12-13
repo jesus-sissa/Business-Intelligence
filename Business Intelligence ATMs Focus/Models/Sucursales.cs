@@ -14,6 +14,7 @@
         public bool Val1 { get; set; }
         public bool Val2 { get; set; }
         public string Logo { get; set; }
+        public string urlEscritorioRemoto { get;set; }
     }
     public class SucursalesMonitoreo
     {

@@ -138,7 +138,8 @@ namespace Business_Intelligence_ATMs_Focus.Service
                                     NumVal = Convert.ToInt32(drdb["pNumValidadores"]),
                                     Val1 = Convert.ToBoolean(drdb["validador1"]),
                                     Val2 = Convert.ToBoolean(drdb["validador2"]),
-                                    Logo = drdb["Logo"].ToString()
+                                    Logo = drdb["Logo"].ToString(),
+                                    urlEscritorioRemoto = drdb["urlEscritorioRemoto"].ToString()
                                 });
                             }
                         }

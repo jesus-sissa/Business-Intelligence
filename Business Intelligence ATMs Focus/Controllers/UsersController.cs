@@ -84,9 +84,9 @@ namespace Business_Intelligence_ATMs_Focus.Controllers
                 }
 
                 //producion
-                //Data._databases = ManagementService.Instancia.GetDatabases();
+                Data._databases = ManagementService.Instancia.GetDatabases();
                 //pruebas
-                Data._databases = ManagementService.Instancia.GetDatabasesPrb();
+                //Data._databases = ManagementService.Instancia.GetDatabasesPrb();
 
 
                 if (oUsuario.Nivel == 3)
