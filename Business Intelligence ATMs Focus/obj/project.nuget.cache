@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fxceuAOmZmB+7yuuJHwIS4FMf7meVPE2upmCzREatoRS4HXkt1r3Lx+Bx6pe2NguRnYHAemQX1iCwwG7yJl10Q==",
+  "dgSpecHash": "mPIbE4pw5RX8nShY/ydcaPDR7a23vYeWMLfSfy1q3nGVWVE+69HvKBgyrfLX8Hxv6QeGdsY+zJPfouySluvt5Q==",
   "success": true,
-  "projectFilePath": "D:\\REPOSITORY\\SOURCE CODE\\Business Intelligence\\Business Intelligence ATMs Focus\\Business Intelligence ATMs Focus.csproj",
+  "projectFilePath": "C:\\Users\\jesus.ortega\\Desktop\\Business-Intelligence\\Business Intelligence ATMs Focus\\Business Intelligence ATMs Focus.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jesus.ortega\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\jesus.ortega\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
