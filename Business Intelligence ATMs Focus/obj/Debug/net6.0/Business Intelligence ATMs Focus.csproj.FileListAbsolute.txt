@@ -64,3 +64,41 @@ C:\Users\juan.mora\Documents\December\DashboardBox\Business-Intelligence\Busines
 C:\Users\juan.mora\Documents\December\DashboardBox\Business-Intelligence\Business Intelligence ATMs Focus\obj\Debug\net6.0\Business Intelligence ATMs Focus.pdb
 C:\Users\juan.mora\Documents\December\DashboardBox\Business-Intelligence\Business Intelligence ATMs Focus\obj\Debug\net6.0\Business Intelligence ATMs Focus.genruntimeconfig.cache
 C:\Users\juan.mora\Documents\December\DashboardBox\Business-Intelligence\Business Intelligence ATMs Focus\obj\Debug\net6.0\ref\Business Intelligence ATMs Focus.dll
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\bin\Debug\net6.0\appsettings.json
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\bin\Debug\net6.0\Business Intelligence ATMs Focus.staticwebassets.runtime.json
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\bin\Debug\net6.0\Business Intelligence ATMs Focus.exe
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\bin\Debug\net6.0\Business Intelligence ATMs Focus.deps.json
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\bin\Debug\net6.0\Business Intelligence ATMs Focus.runtimeconfig.json
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\bin\Debug\net6.0\Business Intelligence ATMs Focus.dll
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\bin\Debug\net6.0\Business Intelligence ATMs Focus.pdb
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\bin\Debug\net6.0\System.Data.SqlClient.dll
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\bin\Debug\net6.0\runtimes\win-arm64\native\sni.dll
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\bin\Debug\net6.0\runtimes\win-x64\native\sni.dll
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\bin\Debug\net6.0\runtimes\win-x86\native\sni.dll
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\obj\Debug\net6.0\Business Intelligence ATMs Focus.csproj.AssemblyReference.cache
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\obj\Debug\net6.0\Business Intelligence ATMs Focus.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\obj\Debug\net6.0\Business Intelligence ATMs Focus.AssemblyInfoInputs.cache
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\obj\Debug\net6.0\Business Intelligence ATMs Focus.AssemblyInfo.cs
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\obj\Debug\net6.0\Business Intelligence ATMs Focus.csproj.CoreCompileInputs.cache
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\obj\Debug\net6.0\Business Intelligence ATMs Focus.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\obj\Debug\net6.0\Business Intelligence ATMs Focus.RazorAssemblyInfo.cache
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\obj\Debug\net6.0\Business Intelligence ATMs Focus.RazorAssemblyInfo.cs
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\obj\Debug\net6.0\staticwebassets\msbuild.Business Intelligence ATMs Focus.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\obj\Debug\net6.0\staticwebassets\msbuild.build.Business Intelligence ATMs Focus.props
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.Business Intelligence ATMs Focus.props
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.Business Intelligence ATMs Focus.props
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\obj\Debug\net6.0\scopedcss\bundle\Business Intelligence ATMs Focus.styles.css
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\obj\Debug\net6.0\scopedcss\projectbundle\Business Intelligence ATMs Focus.bundle.scp.css
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\obj\Debug\net6.0\Business Intelligence ATMs Focus.csproj.CopyComplete
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\obj\Debug\net6.0\Business Intelligence ATMs Focus.dll
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\obj\Debug\net6.0\refint\Business Intelligence ATMs Focus.dll
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\obj\Debug\net6.0\Business Intelligence ATMs Focus.pdb
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\obj\Debug\net6.0\Business Intelligence ATMs Focus.genruntimeconfig.cache
+C:\Users\jesus.ortega\Desktop\Business-Intelligence\Business Intelligence ATMs Focus\obj\Debug\net6.0\ref\Business Intelligence ATMs Focus.dll
