@@ -1,4 +1,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Business_Intelligence_ATMs_Focus.Service.Contrato;
+using Business_Intelligence_ATMs_Focus.Models;
+using Business_Intelligence_ATMs_Focus.Service.Implements;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,7 +25,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 //    options.Cookie.IsEssential = true;
 //});
 
-
+builder.Services.AddScoped<IGenericService<OwnBranchesModel>, SucursalesRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewData["Title"] = "OwnBranches";
+}
+
+
+<div class="row">
+    <div class="col-lg-12 col-xl-12">
+        <div class="card">
+
+            <div class="card-body">
+
+                <div class="row justify-content-center">
+
+                    <div class="col-10">
+                        <button type="button" class="btn btn-success btn-sm boton-nuevo-empleado">Nueva Sucursal</button>
+
+                        <table class="table table-striped" id="tablaSucursales">
+                            <thead>
+                                <tr>
+                                    <th>Nombre Sucursal</th>
+                                    <th>Nombre Servidor</th>
+                                    <th>Nombre Base de datos</th>
+                                    <th>Nombre Usuario</th>
+                                    <th>Password</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalSucursal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Sucursales propias</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="mb-3">
+                    <label class="form-label">Nombre Sucursal</label>
+                    <input type="text" class="form-control" id="txtsucursal" autocomplete="off">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Nombre Servidor</label>
+                    <input type="text" class="form-control" id="txtservidor" autocomplete="off">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Nombre Base de datos</label>
+                    <input type="text" class="form-control" id="txtbase" autocomplete="off">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Nombre Usuario</label>
+                    <input type="text" class="form-control" id="txtusuario" autocomplete="off">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="text" class="form-control" id="txtpassword" autocomplete="off">
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary boton-guardar-cambios-sucursal">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts{
+    <script src="~/js/index.js"></script>
+}
+

@@ -1,10 +1,6 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\jesus.ortega\\Desktop\\Business-Intelligence\\Business Intelligence ATMs Focus\\obj\\Release\\net6.0\\scopedcss\\projectbundle\\Business Intelligence ATMs Focus.bundle.scp.css",
-      "PackagePath": "staticwebassets\\Business Intelligence ATMs Focus.bundle.scp.css"
-    },
-    {
       "Id": "C:\\Users\\jesus.ortega\\Desktop\\Business-Intelligence\\Business Intelligence ATMs Focus\\wwwroot\\css\\admin\\assets\\fonts\\themify.eot",
       "PackagePath": "staticwebassets\\css\\admin\\assets\\fonts\\themify.eot"
     },
@@ -587,6 +583,10 @@
     {
       "Id": "C:\\Users\\jesus.ortega\\Desktop\\Business-Intelligence\\Business Intelligence ATMs Focus\\wwwroot\\images\\watch.jpg",
       "PackagePath": "staticwebassets\\images\\watch.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jesus.ortega\\Desktop\\Business-Intelligence\\Business Intelligence ATMs Focus\\wwwroot\\js\\Index.js",
+      "PackagePath": "staticwebassets\\js\\Index.js"
     },
     {
       "Id": "C:\\Users\\jesus.ortega\\Desktop\\Business-Intelligence\\Business Intelligence ATMs Focus\\wwwroot\\js\\dashboard1.js",
