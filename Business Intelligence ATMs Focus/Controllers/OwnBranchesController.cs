@@ -36,5 +36,17 @@ namespace Business_Intelligence_ATMs_Focus.Controllers
             else
                 return StatusCode(StatusCodes.Status500InternalServerError, new { valor = _resultado, msg = "errror" });
         }
+
+        [HttpPut]
+        public async Task<IActionResult> editarSucursales([FromBody] OwnBranchesModel modelo)
+        {
+            bool _resultado = await _SucursalService.Editar(modelo);
+
+            if (_resultado)
+                return StatusCode(StatusCodes.Status200OK, new { valor = _resultado, msg = "ok" });
+            else
+                return StatusCode(StatusCodes.Status500InternalServerError, new { valor = _resultado, msg = "errror" });
+        }
+
     }
 }

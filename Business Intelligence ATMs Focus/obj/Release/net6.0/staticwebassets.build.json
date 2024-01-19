@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "PjdfVHJ5k9Fd8Ujg+CuCz5UWXIG9V7XUZ5+u8PxxB7k=",
+  "Hash": "zsHJ6+kuT/vcBV9tVsBMOweA+Xkzri01E2P2EUb4XUQ=",
   "Source": "Business Intelligence ATMs Focus",
   "BasePath": "_content/Business Intelligence ATMs Focus",
   "Mode": "Default",
@@ -678,6 +678,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\lib\\sweetalert\\sweetalert.css"
+    },
+    {
+      "Identity": "C:\\Users\\jesus.ortega\\Desktop\\Business-Intelligence\\Business Intelligence ATMs Focus\\wwwroot\\css\\lib\\sweetalert2\\sweetalert2.min.css",
+      "SourceId": "Business Intelligence ATMs Focus",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\jesus.ortega\\Desktop\\Business-Intelligence\\Business Intelligence ATMs Focus\\wwwroot\\",
+      "BasePath": "_content/Business Intelligence ATMs Focus",
+      "RelativePath": "css/lib/sweetalert2/sweetalert2.min.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\lib\\sweetalert2\\sweetalert2.min.css"
     },
     {
       "Identity": "C:\\Users\\jesus.ortega\\Desktop\\Business-Intelligence\\Business Intelligence ATMs Focus\\wwwroot\\css\\lib\\themify-icons.css",
@@ -2531,23 +2548,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\dashboard2.js"
-    },
-    {
-      "Identity": "C:\\Users\\jesus.ortega\\Desktop\\Business-Intelligence\\Business Intelligence ATMs Focus\\wwwroot\\js\\Index.js",
-      "SourceId": "Business Intelligence ATMs Focus",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jesus.ortega\\Desktop\\Business-Intelligence\\Business Intelligence ATMs Focus\\wwwroot\\",
-      "BasePath": "_content/Business Intelligence ATMs Focus",
-      "RelativePath": "js/Index.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\Index.js"
     },
     {
       "Identity": "C:\\Users\\jesus.ortega\\Desktop\\Business-Intelligence\\Business Intelligence ATMs Focus\\wwwroot\\js\\lib\\barRating\\barRating.init.js",
@@ -4469,6 +4469,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\lib\\sweetalert\\sweetalert.min.js"
+    },
+    {
+      "Identity": "C:\\Users\\jesus.ortega\\Desktop\\Business-Intelligence\\Business Intelligence ATMs Focus\\wwwroot\\js\\lib\\sweetalert2\\sweetalert2.all.min.js",
+      "SourceId": "Business Intelligence ATMs Focus",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\jesus.ortega\\Desktop\\Business-Intelligence\\Business Intelligence ATMs Focus\\wwwroot\\",
+      "BasePath": "_content/Business Intelligence ATMs Focus",
+      "RelativePath": "js/lib/sweetalert2/sweetalert2.all.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\lib\\sweetalert2\\sweetalert2.all.min.js"
     },
     {
       "Identity": "C:\\Users\\jesus.ortega\\Desktop\\Business-Intelligence\\Business Intelligence ATMs Focus\\wwwroot\\js\\lib\\toastr\\toastr.init.js",

@@ -13,7 +13,7 @@
                 <div class="row justify-content-center">
 
                     <div class="col-10">
-                        <button type="button" class="btn btn-success btn-sm boton-nuevo-empleado">Nueva Sucursal</button>
+                        <button type="button" class="btn btn-success btn-sm boton-nueva-sucursal">Nueva Sucursal</button>
 
                         <table class="table table-striped" id="tablaSucursales">
                             <thead>
@@ -23,6 +23,7 @@
                                     <th>Nombre Base de datos</th>
                                     <th>Nombre Usuario</th>
                                     <th>Password</th>
+                                    <th>Status</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -48,9 +49,9 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Sucursales propias</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               @* <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>*@
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="divmodal">
 
                 <div class="mb-3">
                     <label class="form-label">Nombre Sucursal</label>
@@ -72,13 +73,21 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Password</label>
-                    <input type="text" class="form-control" id="txtpassword" autocomplete="off">
+                    <input type="password" class="form-control" id="txtpassword" autocomplete="off">
                 </div>
+                
+                    <div class="mb-3">
+                        <label class="form-label">Status</label>
+                        <select class="form-select" id="selectstatus">
+                            <option value="A">ACTIVO</option>
+                            <option value="B">BAJA</option>
 
+                        </select>
+                    </div>
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-secondary" id="btncerrar">Cerrar</button>
                 <button type="button" class="btn btn-primary boton-guardar-cambios-sucursal">Guardar</button>
             </div>
         </div>
@@ -88,6 +97,172 @@
 
 
 @section Scripts{
-    <script src="~/js/index.js"></script>
+    @*<script src="~/js/index.js"></script>*@
+    <script type="text/javascript">
+
+        const _modeloSucursal = {
+            Id_sucursal: 0,
+            Sucursal: "",
+            Servidor: "",
+            Dba: "",
+            Usuario: "",
+            Password: "",
+            Status: ""
+        }
+        $(document).on("click", ".boton-nueva-sucursal", function () {
+
+            _modeloSucursal.Id_sucursal=0;
+            _modeloSucursal.Sucursal = "";
+            _modeloSucursal.Servidor = "";
+            _modeloSucursal.Dba = "";
+            _modeloSucursal.Usuario = "";
+            _modeloSucursal.Password = "";
+            _modeloSucursal.Status="";
+
+            MostrarModal();
+
+        })
+
+        function MostrarSucursales() {
+
+            fetch("/OwnBranches/listaSucursales")
+                .then(response => {
+                    return response.ok ? response.json() : Promise.reject(response)
+                })
+                .then(responseJson => {
+                    if (responseJson.length > 0) {
+
+                        $("#tablaSucursales tbody").html("");
+
+
+                        responseJson.forEach((sucursal) => {
+                            $("#tablaSucursales tbody").append(
+                                $("<tr>").append(
+                                    $("<td>").text(sucursal.branch_name),
+                                    $("<td>").text(sucursal.server_name),
+                                    $("<td>").text(sucursal.dba_name),
+                                    $("<td>").text(sucursal.usr_name),
+                                    $("<td>").text("--"),
+                                    $("<td>").text(sucursal.status),
+                                    $("<td>").append(
+                                        $("<button>").addClass("btn btn-primary btn-sm boton-editar-sucursal").text("Editar").data("dataSucursal", sucursal)
+                                        
+                                    )
+                                )
+                            )
+                        })
+
+                    }
+
+
+                })
+        }
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            MostrarSucursales();
+
+        }, false)
+
+        function MostrarModal( ) {
+
+            $("#txtsucursal").val(_modeloSucursal.Sucursal);
+            $("#txtservidor").val(_modeloSucursal.Servidor);
+            $("#txtbase").val(_modeloSucursal.Dba);
+            $("#txtusuario").val(_modeloSucursal.Usuario);
+            $("#txtpassword").val(_modeloSucursal.Password);
+
+            $("#selectstatus").val(_modeloSucursal.Status == "" ? $("#selectstatus option:first").val() : _modeloSucursal.Status)
+
+            $("#modalSucursal").modal("show");
+
+        }
+
+        $(document).on("click", ".boton-editar-sucursal", function () {
+
+            const _sucursal = $(this).data("dataSucursal");
+
+            _modeloSucursal.Id_sucursal = _sucursal.ownbranche_id;
+            _modeloSucursal.Sucursal = _sucursal.branch_name;
+            _modeloSucursal.Servidor = _sucursal.server_name;
+            _modeloSucursal.Dba = _sucursal.dba_name;
+            _modeloSucursal.Usuario = _sucursal.usr_name;
+            _modeloSucursal.Password = _sucursal.usr_password;
+            _modeloSucursal.Status=_sucursal.status;
+
+            MostrarModal();
+
+        })
+
+
+        $(document).on("click", "#btncerrar", function () {
+            $("#modalSucursal").modal("hide");
+        })
+
+        $(document).on("click", ".boton-guardar-cambios-sucursal", function () {
+
+            const modelo = {
+
+                ownbranche_id: _modeloSucursal.Id_sucursal,
+                branch_name: $("#txtsucursal").val(),
+                server_name: $("#txtservidor").val(),
+                dba_name: $("#txtbase").val(),
+                usr_name: $("#txtusuario").val(),
+                usr_password: $("#txtpassword").val(),
+                status: $("#selectstatus").val()
+            }
+            if (_modeloSucursal.Id_sucursal==0)
+            {
+
+                fetch("/OwnBranches/guardarSucursales", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json; charset=utf-8" },
+                    body: JSON.stringify(modelo)
+                        })
+                    .then(response => {
+                        return response.ok ? response.json() : Promise.reject(response)
+                    })
+                    .then(responseJson => {
+
+                        if (responseJson.valor) {
+                            $("#modalSucursal").modal("hide");
+                            Swal.fire("Listo!", "Sucursal fue creada", "success");
+                            MostrarSucursales();
+                        }
+                        else
+                            Swal.fire("Lo sentimos", "No se puedo crear", "error");
+                    })
+            }
+            else
+            {
+                fetch("/OwnBranches/editarSucursales", {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json; charset=utf-8" },
+                    body: JSON.stringify(modelo)
+                })
+                    .then(response => {
+                        return response.ok ? response.json() : Promise.reject(response)
+                    })
+                    .then(responseJson => {
+
+                        if (responseJson.valor) {
+                            $("#modalSucursal").modal("hide");
+                            Swal.fire("Listo!", "La sucursal fue actualizada", "success");
+                            MostrarSucursales(); 
+                        }
+                        else
+                            Swal.fire("Lo sentimos", "No se puedo actualizar", "error");
+                    })
+            
+            
+            }
+
+        })
+
+    </script>
+
+
+
 }
 
