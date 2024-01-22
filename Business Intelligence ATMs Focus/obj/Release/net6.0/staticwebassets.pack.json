@@ -1,10 +1,6 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\jesus.ortega\\Desktop\\Business-Intelligence\\Business Intelligence ATMs Focus\\obj\\Release\\net6.0\\scopedcss\\projectbundle\\Business Intelligence ATMs Focus.bundle.scp.css",
-      "PackagePath": "staticwebassets\\Business Intelligence ATMs Focus.bundle.scp.css"
-    },
-    {
       "Id": "C:\\Users\\jesus.ortega\\Desktop\\Business-Intelligence\\Business Intelligence ATMs Focus\\wwwroot\\css\\admin\\assets\\fonts\\themify.eot",
       "PackagePath": "staticwebassets\\css\\admin\\assets\\fonts\\themify.eot"
     },
@@ -155,6 +151,10 @@
     {
       "Id": "C:\\Users\\jesus.ortega\\Desktop\\Business-Intelligence\\Business Intelligence ATMs Focus\\wwwroot\\css\\lib\\select2\\select2.min.css",
       "PackagePath": "staticwebassets\\css\\lib\\select2\\select2.min.css"
+    },
+    {
+      "Id": "C:\\Users\\jesus.ortega\\Desktop\\Business-Intelligence\\Business Intelligence ATMs Focus\\wwwroot\\css\\lib\\sweetalert2\\sweetalert2.min.css",
+      "PackagePath": "staticwebassets\\css\\lib\\sweetalert2\\sweetalert2.min.css"
     },
     {
       "Id": "C:\\Users\\jesus.ortega\\Desktop\\Business-Intelligence\\Business Intelligence ATMs Focus\\wwwroot\\css\\lib\\sweetalert\\sweetalert.css",
@@ -1039,6 +1039,10 @@
     {
       "Id": "C:\\Users\\jesus.ortega\\Desktop\\Business-Intelligence\\Business Intelligence ATMs Focus\\wwwroot\\js\\lib\\sparklinechart\\sparkline.init.js",
       "PackagePath": "staticwebassets\\js\\lib\\sparklinechart\\sparkline.init.js"
+    },
+    {
+      "Id": "C:\\Users\\jesus.ortega\\Desktop\\Business-Intelligence\\Business Intelligence ATMs Focus\\wwwroot\\js\\lib\\sweetalert2\\sweetalert2.all.min.js",
+      "PackagePath": "staticwebassets\\js\\lib\\sweetalert2\\sweetalert2.all.min.js"
     },
     {
       "Id": "C:\\Users\\jesus.ortega\\Desktop\\Business-Intelligence\\Business Intelligence ATMs Focus\\wwwroot\\js\\lib\\sweetalert\\sweetalert.init.js",
