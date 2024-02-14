@@ -70,8 +70,7 @@ namespace Business_Intelligence_ATMs_Focus.Service.Implements
             {
                 try
                 {
-
-                    cmd = Conexion.creaComando("Sprocedure_ownbranches_get", oConexion);
+                    cmd = Conexion.creaComando("sprocedure_select_ownbranches", oConexion);
 
                     cmd.Connection.Open();
 
@@ -81,8 +80,8 @@ namespace Business_Intelligence_ATMs_Focus.Service.Implements
                         {
                             _lista.Add(new OwnBranchesModel()
                             {
-                                ownbranche_id = Convert.ToInt32( dr["ownbranche_id"].ToString()),
-                                branch_name = dr["branch_name"].ToString(),
+                                ownbranche_id = Convert.ToInt32( dr["key"].ToString()),
+                                branch_name = dr["name"].ToString(),
                                 server_name = dr["server_name"].ToString(),
                                 dba_name = dr["dba_name"].ToString(),
                                 usr_name =dr["usr_name"].ToString(),

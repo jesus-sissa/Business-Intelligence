@@ -1,32 +1,33 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jesus.ortega\\Desktop\\Business-Intelligence\\Business Intelligence ATMs Focus\\Business Intelligence ATMs Focus.csproj": {}
+    "C:\\Users\\juan.mora\\Documents\\December\\BusinnesATMs\\Business Intelligence ATMs Focus\\Business Intelligence ATMs Focus.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jesus.ortega\\Desktop\\Business-Intelligence\\Business Intelligence ATMs Focus\\Business Intelligence ATMs Focus.csproj": {
+    "C:\\Users\\juan.mora\\Documents\\December\\BusinnesATMs\\Business Intelligence ATMs Focus\\Business Intelligence ATMs Focus.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jesus.ortega\\Desktop\\Business-Intelligence\\Business Intelligence ATMs Focus\\Business Intelligence ATMs Focus.csproj",
+        "projectUniqueName": "C:\\Users\\juan.mora\\Documents\\December\\BusinnesATMs\\Business Intelligence ATMs Focus\\Business Intelligence ATMs Focus.csproj",
         "projectName": "Business Intelligence ATMs Focus",
-        "projectPath": "C:\\Users\\jesus.ortega\\Desktop\\Business-Intelligence\\Business Intelligence ATMs Focus\\Business Intelligence ATMs Focus.csproj",
-        "packagesPath": "C:\\Users\\jesus.ortega\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jesus.ortega\\Desktop\\Business-Intelligence\\Business Intelligence ATMs Focus\\obj\\",
+        "projectPath": "C:\\Users\\juan.mora\\Documents\\December\\BusinnesATMs\\Business Intelligence ATMs Focus\\Business Intelligence ATMs Focus.csproj",
+        "packagesPath": "C:\\Users\\juan.mora\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\juan.mora\\Documents\\December\\BusinnesATMs\\Business Intelligence ATMs Focus\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\jesus.ortega\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\juan.mora\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -73,7 +74,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.408\\RuntimeIdentifierGraph.json"
         }
       }
     }

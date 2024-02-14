@@ -27,25 +27,40 @@ namespace Business_Intelligence_ATMs_Focus.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> guardarSucursales([FromBody] OwnBranchesModel modelo)
+        public async Task<IActionResult> guardarSucursales( [FromBody]OwnBranchesModel modelo)
         {
-            bool _resultado = await _SucursalService.Guardar(modelo);
+            if (ModelState.IsValid)
+            {
+                bool _resultado = await _SucursalService.Guardar(modelo);
 
-            if (_resultado)
-                return StatusCode(StatusCodes.Status200OK, new { valor = _resultado, msg = "ok" });
+                if (_resultado)
+                    return StatusCode(StatusCodes.Status200OK, new { valor = _resultado, msg = "ok" });
+                else
+                    return StatusCode(StatusCodes.Status500InternalServerError, new { valor = _resultado, msg = "errror" });
+            }
             else
-                return StatusCode(StatusCodes.Status500InternalServerError, new { valor = _resultado, msg = "errror" });
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { valor = "Error", msg = "errror" });
+            }
         }
 
         [HttpPut]
         public async Task<IActionResult> editarSucursales([FromBody] OwnBranchesModel modelo)
         {
-            bool _resultado = await _SucursalService.Editar(modelo);
+            if (ModelState.IsValid)
+            {
+                bool _resultado = await _SucursalService.Editar(modelo);
 
-            if (_resultado)
-                return StatusCode(StatusCodes.Status200OK, new { valor = _resultado, msg = "ok" });
+                if (_resultado)
+                    return StatusCode(StatusCodes.Status200OK, new { valor = _resultado, msg = "ok" });
+                else
+                    return StatusCode(StatusCodes.Status500InternalServerError, new { valor = _resultado, msg = "errror" });
+            }
             else
-                return StatusCode(StatusCodes.Status500InternalServerError, new { valor = _resultado, msg = "errror" });
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { valor = "Error", msg = "errror" });
+            }
+
         }
 
     }

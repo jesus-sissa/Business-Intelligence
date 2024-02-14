@@ -1,0 +1,480 @@
+﻿@{
+    ViewData["Title"] = "Clientes";
+}
+<div class="row">
+    <div class="col-lg-12 col-xl-12">
+        <div class="card">
+
+            <div class="card-body">
+
+                <div class="row justify-content-center">
+
+                    <div class="col-10">
+                        <button type="button" class="btn btn-sissa btn-rounded boton-nueva-cliente"><b>+</b></button>
+
+                        <table class="table table-striped" id="tablaCliente">
+                            <thead>
+                                <tr>
+
+                                    <th> Sucursal Propia</th>
+                                    <th> Razón Social</th>
+                                    <th> Nombre Cliente</th>
+                                    <th> Direccion Ciente</th>
+                                    <th> Clave Siac</th>
+                                    <th> status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Clientes</h5>
+                @* <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>*@
+            </div>
+
+            <form>
+
+                <div class="modal-body" id="divmodal">
+
+                    <div class="mb-3">
+                        <label class="form-label">Sucursal Propia</label>
+                        @*<input type="text" class="form-control" id="" autocomplete="off" required>*@
+                        <select id="txtSocursalPropia" class="form-control input-rounded " required>
+                        </select>
+                        <p id="mej1"></p>
+
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label class="form-label">Razón Social</label>
+                        @*<input type="text" class="form-control" id="" autocomplete="off" required>*@
+                        <select id="txtrazonSocial" class="form-control input-rounded" required>
+                            @*<option value="0">Selecciona...</option>*@
+                        </select>
+
+                        <p id="mej2"></p>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Nombre Cliente</label>
+                        @*<input type="text" class="form-control input-rounded" id="txtnombreCliente" autocomplete="off" required>*@
+
+                        <select id="txtnombreCliente" class="form-control input-rounded lineas" required>
+                            @*<option value="0">Selecciona...</option>*@
+                        </select>
+                        <p id="mej3"></p>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Direccion Cliente</label>
+                        <input type="text" class="form-control input-rounded" id="txtdireccionCliente" autocomplete="off" required>
+                        <p id="mej4"></p>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label class="form-label">Clave Siac</label>
+                        <input type="text" class="form-control input-rounded" id="txtsiac_key" autocomplete="off" required>
+                        <p id="mej5"></p>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Status</label>
+                        <select class="form-control input-rounded" id="selectstatus">
+                            <option value="A">ACTIVO</option>
+                            <option value="B">BAJA</option>
+
+                        </select>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-rounded" id="btncerrar">Cerrar</button>
+                    <button type="submit" class="btn btn-sissa btn-rounded boton-guardar-cambios-Cliente">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        cmb_sucursalesPropias()
+        cmb_razonSocial()
+        const _modeloCliente = {
+            customer_id: 0,
+            ownbranche_id: 0,
+            social_reason_id: 0,
+            rfc: "",
+            branch_name: "",
+            business_name: "",
+            clinte_nombre: "",
+            cliente_direccion: "",
+            siac_key: "",
+            status: ""
+        }
+        $(document).on("click", ".boton-nueva-cliente", function() {
+           $("#txtSocursalPropia").prop('disabled', false);
+            $("#txtrazonSocial").prop('disabled', false);
+            $("#txtnombreCliente").prop('disabled', false);
+            $("#txtdireccionCliente").prop('disabled', false);
+            $("#txtsiac_key").prop('disabled', false);;
+            _modeloCliente.customer_id = 0;
+            _modeloCliente.ownbranche_id = 0;
+            _modeloCliente.social_reason_id = 0;
+            _modeloCliente.rfc = "";
+            _modeloCliente.branch_name = "";
+            _modeloCliente.business_name = "";
+            _modeloCliente.clinte_nombre = "";
+            _modeloCliente.cliente_direccion = "";
+            _modeloCliente.siac_key = "";
+            _modeloCliente.status = "";
+            MostrarModal();
+            //$("#txtSocursalPropia").html("");
+            //$("#txtrazonSocial").html("");
+
+            //$("#txtsiac_key").val(variables.id)
+
+
+
+        })
+        function MostrarModal() {
+
+            $("#txtSocursalPropia").val(_modeloCliente.branch_name);
+            $("#txtrazonSocial").val(_modeloCliente.business_name);
+            $("#txtnombreCliente").val(_modeloCliente.clinte_nombre);
+            $("#txtdireccionCliente").val(_modeloCliente.cliente_direccion);
+            $("#txtsiac_key").val(_modeloCliente.siac_key);
+            $("#selectstatus").val(_modeloCliente.status == "" ? $("#selectstatus option:first").val() : _modeloCliente.status)
+
+            $("#modalCliente").modal("show");
+
+        }
+        $(document).on("click", ".boton-editar-Cliente", function() {
+
+            const _sucursal = $(this).data("dataSucursal");
+
+            $("#txtSocursalPropia").prop('disabled', true);
+            $("#txtrazonSocial").prop('disabled', true);
+            $("#txtnombreCliente").prop('disabled', true);
+            $("#txtdireccionCliente").prop('disabled', true);
+            $("#txtsiac_key").prop('disabled', true);
+
+            //cmb_BaseLocal(_sucursal.ownbranche_id, _sucursal.rfc);
+            _modeloCliente.customer_id = _sucursal.customer_id
+            _modeloCliente.branch_name = _sucursal.ownbranche_id
+            _modeloCliente.business_name = _sucursal.rfc;
+            const _rfc = $("#txtrazonSocial").children("option:selected").val();
+            cmb_BaseLocal(_sucursal.ownbranche_id, _rfc);
+            _modeloCliente.clinte_nombre = _sucursal.own_client_id;
+            _modeloCliente.cliente_direccion = _sucursal.client_address;
+            _modeloCliente.siac_key = _sucursal.siac_key;
+            _modeloCliente.status = _sucursal.status;
+            MostrarModal();
+        })
+
+        function cmb_sucursalesPropias() {
+            fetch("/Clientes/listaSucursalpropia")
+                .then(response => {
+                    return response.ok ? response.json() : Promise.reject(response)
+                })
+                .then(responseJson => {
+                    if (responseJson.length > 0) {
+
+
+                        responseJson.forEach((listaSocurslaPropia) => {
+
+                            $("#txtSocursalPropia").append(
+                                $("<option value=" + listaSocurslaPropia.ownbranche_id + ">").text(listaSocurslaPropia.branch_name))
+
+
+                        })
+                    }
+                })
+        }
+
+        function cmb_razonSocial() {
+
+            fetch("/Clientes/listaRazonSocial")
+                .then(response => {
+                    return response.ok ? response.json() : Promise.reject(response)
+                })
+                .then(responseJson => {
+                    if (responseJson.length > 0) {
+
+                        responseJson.forEach((listaRazonSocial, i) => {
+
+                            $("#txtrazonSocial").append(
+
+                                $("<option value=" + listaRazonSocial.rfc + ">").text(listaRazonSocial.business_name))
+
+                            variables.id[i] = listaRazonSocial.social_reason_rfc;
+
+                        })
+                    }
+                })
+        }
+
+        function MostrarClientes() {
+
+            fetch("/Clientes/listaCliente")
+                .then(response => {
+                    return response.ok ? response.json() : Promise.reject(response)
+                })
+                .then(responseJson => {
+                    if (responseJson.length > 0) {
+
+                        $("#tablaCliente tbody").html("");
+                        responseJson.forEach((sucursal) => {
+                            $("#tablaCliente  tbody").append(
+                                $("<tr>").append(
+                                    $("<td>").text(sucursal.branch_name),
+                                    $("<td>").text(sucursal.business_name),
+                                    $("<td>").text(sucursal.client_name),
+                                    $("<td>").text(sucursal.client_address),
+                                    $("<td>").text(sucursal.siac_key),
+                                    $("<td>").text(sucursal.status),
+                                    $("<td>").append(
+                                        $("<button>").addClass("btn btn-primary btn-sm boton-editar-Cliente").text("Editar").data("dataSucursal", sucursal)
+
+                                    )
+                                )
+                            )
+                        })
+
+                    }
+                })
+        }
+
+
+
+        $("#txtSocursalPropia").on("change", function() {
+
+
+            $("#txtrazonSocial").val("");
+            $("#txtnombreCliente").val("");
+            $("#txtdireccionCliente").val("");
+            $("#txtsiac_key").val("");
+
+        });
+
+
+        $("#txtnombreCliente").on("change", function(e) {
+
+            const sucursal = $("#txtSocursalPropia").children("option:selected").val();
+            const razonSocial = $(this).children("option:selected").val();
+            txtResto(sucursal, razonSocial)
+
+
+        });
+
+        $(document).on("click", "#txtnombreCliente", function() {
+
+            const sucursal = $("#txtSocursalPropia").children("option:selected").val();
+            const razonSocial = $(this).children("option:selected").val();
+            txtResto(sucursal, razonSocial)
+
+
+
+        });
+
+        $("#txtrazonSocial").on("change", function() {
+
+            $("#txtnombreCliente").html("");
+            $("#txtsiac_key").val("");
+            $("#txtdireccionCliente").val("");
+            const sucursal = $("#txtSocursalPropia").children("option:selected").val();
+            const _rfc = $(this).children("option:selected").val();
+            cmb_BaseLocal(sucursal, _rfc);
+            $("#txtnombreCliente").html("");
+            const razonSocial = $(this).children("option:selected").val();
+            txtResto(sucursal, razonSocial)
+            //$("#txtsiac_key").val(variables.id)
+            //$("#txtsiac_key").val(mdl._id)
+
+
+        });
+
+
+
+        function cmb_BaseLocal(sucursal, _rfc) {
+            const modelo = {
+                ownbranche_id: sucursal,
+                rfc: _rfc
+            }
+
+            fetch("/Clientes/listaClientes", {
+                method: "POST",
+                headers: { "Content-Type": "application/json; charset=utf-8" },
+                body: JSON.stringify(modelo)
+            })
+                .then(response => {
+                    return response.ok ? response.json() : Promise.reject(response)
+                })
+                .then(responseJson => {
+                    if (responseJson.length > 0) {
+
+                        responseJson.forEach((listaC) => {
+
+                            $("#txtnombreCliente").append(
+                                $("<option value=" + listaC.ownbranche_id + ">").text(listaC.client_name))
+                        })
+
+                    }
+                })
+        }
+
+        function txtResto(sucursal, razonSocial) {
+            const modelo = {
+                ownbranche_id: sucursal,
+                rs_id: razonSocial
+            }
+            fetch("/Clientes/listaClientes", {
+                method: "POST",
+                headers: { "Content-Type": "application/json; charset=utf-8" },
+                body: JSON.stringify(modelo)
+            })
+                .then(response => {
+                    return response.ok ? response.json() : Promise.reject(response)
+                })
+                .then(responseJson => {
+                    if (responseJson.length > 0) {
+                        responseJson.forEach((listaResto) => {
+                            $("#txtsiac_key").val(listaResto.siac_key);
+                            $("#txtdireccionCliente").val(listaResto.client_address);
+                        })
+
+                    }
+                })
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            MostrarClientes()
+
+
+        }, false)
+
+
+
+        $(document).on("click", "#btncerrar", function() {
+            $("#modalCliente").modal("hide");
+        })
+
+        $(document).on("click", ".boton-guardar-cambios-Cliente", function(e) {
+            e.preventDefault()
+            const modelo = {
+                customer_id: _modeloCliente.customer_id,
+                ownbranche_id: $("#txtSocursalPropia").val(),
+                rfc: $("#txtrazonSocial option:selected").val(),
+                client_name: $("#txtnombreCliente option:selected").text(),
+                client_address: $("#txtdireccionCliente").val(),
+                siac_key: $("#txtsiac_key").val(),
+                status: $("#selectstatus").val(),
+                own_client_id: $("#txtnombreCliente option:selected").val()
+                //business_name: "",
+                //branch_name: "",
+                //rfc: "",
+                //server_name: "",
+                //dba_name: "",
+                //usr_name: "",
+                //usr_password: ""
+            }
+                       const modeloPut = {
+                customer_id: _modeloCliente.customer_id, 
+                status: $("#selectstatus").val(),
+ 
+            }
+            if (_modeloCliente.customer_id == 0) {
+
+                fetch("/Clientes/guardarCliente", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json; charset=utf-8" },
+                    body: JSON.stringify(modelo)
+                })
+                    .then(response => {
+                        //return response.ok ? response.json() : Promise.reject(response)
+                        return response.ok ? response.json() : response.text()
+                    })
+                    .then(responseJson => {
+
+                        if (responseJson.valor) {
+                            $("#modalCliente").modal("hide");
+                            Swal.fire("Listo!", "Sucursal fue creada", "success");
+                            MostrarClientes();
+                        }
+                        else
+                            validacionForm()
+                        //Swal.fire("Lo sentimos", "No se puedo crear", "error");
+                    })
+            }
+            else {
+                fetch("/Clientes/editarClientes", {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json; charset=utf-8" },
+                    body: JSON.stringify(modeloPut)
+                })
+                    .then(response => {
+                        //return response.ok ? response.json() : Promise.reject(response)
+                        return response.ok ? response.json() : response.text()
+                    })
+                    .then(responseJson => {
+
+                        if (responseJson.valor) {
+                            $("#modalCliente").modal("hide");
+                            Swal.fire("Listo!", "La sucursal fue actualizada", "success");
+                            MostrarClientes();
+                        }
+                        else
+                            Swal.fire("Lo sentimos", "No se puedo actualizar", "error");
+                    })
+
+
+            }
+
+        })
+
+
+
+        function validacionForm() {
+            if ($("#txtSocursalPropia option:selected").text() == "")
+                $('#mej1').html('<span style="color:red;">Este campo es obligatorio.</span>').show().fadeOut(3500);
+            if ($("#txtrazonSocial option:selected").text() == "")
+                $('#mej2').html('<span style="color:red;">Este campo es obligatorio.</span>').show().fadeOut(3500);
+            if ($("#txtnombreCliente option:selected").text() == "")
+                $('#mej3').html('<span style="color:red;">Este campo es obligatorio.</span>').show().fadeOut(3500);
+            if ($("#txtdireccionCliente").val() == "")
+                $('#mej4').html('<span style="color:red;">Este campo es obligatorio.</span>').show().fadeOut(3500);
+            if ($("#txtsiac_key").val() == "")
+                $('#mej5').html('<span style="color:red;">Este campo es obligatorio.</span>').show().fadeOut(3500);
+        }
+
+        class variables {
+            static id = [];
+
+        }
+
+
+
+
+    </script>
+}
+

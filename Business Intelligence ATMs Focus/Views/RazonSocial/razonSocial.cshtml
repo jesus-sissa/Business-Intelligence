@@ -1,0 +1,256 @@
+﻿@model razonSocialModel
+@{
+    ViewData["Title"] = "razonSocial";
+}
+
+<div class="row">
+    <div class="col-lg-12 col-xl-12">
+        <div class="card">
+
+            <div class="card-body">
+
+                <div class="row justify-content-center">
+
+                    <div class="col-10">
+                        <button type="button" class="btn btn-sissa btn-rounded boton-nueva-socialRaason"><b>+</b> </button>
+
+                        <table class="table table-striped" id="tablasocialReason">
+                            <thead>
+                                <tr>
+                                    <th>RFC</th>
+                                    <th>Nombre Razón Social</th>
+                                    <th>Direccion Razón Social</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalSocialReason" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Razón Social</h5>
+                @* <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>*@
+            </div>
+            <form>
+                <div class="modal-body" id="divmodal">
+
+
+
+                    <div class="mb-3">
+                        <label class="form-label">RFC</label>
+                        <input type="text" class="form-control input-rounded" id="txtrfc" autocomplete="off" required>
+                        <p id="mej1"></p>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Nombre Razón Social</label>
+                        <input type="text" class="form-control input-rounded" id="txtbusinnes_name" autocomplete="off" required>
+                        <p id="mej2"></p>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Direccion Razón Social</label>
+                        <input type="text" class="form-control input-rounded" id="txtbusinnes_address" autocomplete="off" required>
+                        <p id="mej3"></p>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label class="form-label">Status</label>
+                        <select class="form-control input-rounded" id="selectstatus">
+                            <option value="A">ACTIVO</option>
+                            <option value="B">BAJA</option>
+
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-rounded btn-secondary" id="btncerrar">Cerrar</button>
+                    <button type="submit" class="btn btn-sissa btn-rounded boton-guardar-cambios-socialReason">Guardar</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts{
+    <script type="text/javascript">
+
+
+        const _modeloRazonSocial = {
+            Id_razon_social: 0,
+            rfc: "",
+            nombre_razon_social: "",
+            direccion_razon_social: "",
+            status: ""
+        }
+
+        $(document).on("click", ".boton-nueva-socialRaason", function() {
+            _modeloRazonSocial.Id_razon_social = 0;
+            _modeloRazonSocial.rfc = "";
+            _modeloRazonSocial.nombre_razon_social = "";
+            _modeloRazonSocial.direccion_razon_social = "";
+            _modeloRazonSocial.status = "";
+
+            MostrarModal()
+        })
+
+        function MostrarModal() {
+            $("#txtrfc").val(_modeloRazonSocial.rfc);
+            $("#txtbusinnes_name").val(_modeloRazonSocial.nombre_razon_social);
+            $("#txtbusinnes_address").val(_modeloRazonSocial.direccion_razon_social);
+            $("#selectstatus").val(_modeloRazonSocial.status == "" ? $("#selectstatus option:first").val() : _modeloRazonSocial.status);
+
+            $("#modalSocialReason").modal("show")
+        }
+
+        function MostrarRazonSocial() {
+
+            fetch("/RazonSocial/listaSocialReason")
+                .then(response => {
+                    return response.ok ? response.json() : Promise.reject(response)
+                })
+                .then(responseJson => {
+                    if (responseJson.length > 0) {
+
+                        $("#tablasocialReason tbody").html("");
+
+
+                        responseJson.forEach((sucursal) => {
+                            $("#tablasocialReason tbody").append(
+                                $("<tr>").append(
+                                    $("<td>").text(sucursal.rfc),
+                                    $("<td>").text(sucursal.business_name),
+                                    $("<td>").text(sucursal.businnes_address),
+                                    $("<td>").text(sucursal.status),
+                                    $("<td>").append(
+                                        $("<button>").addClass("btn btn-primary btn-sm boton-editar-razon_social").text("Editar").data("dataSocialReazon", sucursal)
+
+                                    )
+                                )
+                            )
+                        })
+
+                    }
+
+
+                })
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+
+            MostrarRazonSocial();
+
+        }, false)
+
+        $(document).on("click", "#btncerrar", function() {
+            $("#modalSocialReason").modal("hide");
+        })
+
+        $(document).on("click", ".boton-editar-razon_social", function() {
+
+            const _socialReason = $(this).data("dataSocialReazon");
+
+            _modeloRazonSocial.Id_razon_social = _socialReason.social_reason_id;
+            _modeloRazonSocial.rfc = _socialReason.rfc;
+            _modeloRazonSocial.nombre_razon_social = _socialReason.business_name;
+            _modeloRazonSocial.direccion_razon_social = _socialReason.businnes_address;
+            _modeloRazonSocial.status = _socialReason.status;
+
+            MostrarModal();
+
+        })
+
+
+        $(document).on("click", ".boton-guardar-cambios-socialReason", function(e) {
+            e.preventDefault();
+
+
+            const modelo = {
+                social_reason_id: _modeloRazonSocial.Id_razon_social,
+                rfc: $("#txtrfc").val(),
+                business_name: $("#txtbusinnes_name").val(),
+                businnes_address: $("#txtbusinnes_address").val(),
+                status: $("#selectstatus").val()
+            }
+            if (_modeloRazonSocial.Id_razon_social == 0) {
+
+                fetch("/RazonSocial/guardarSocialReason", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json; charset=utf-8" },
+                    body: JSON.stringify(modelo)
+                })
+                    .then(response => {
+                        //return response.ok ? response.json() : Promise.reject(response)
+                        return response.ok ? response.json() : response.text()
+                    })
+                    .then(responseJson => {
+
+                        if (responseJson.valor) {
+                            $("#modalSocialReason").modal("hide");
+                            MostrarRazonSocial();
+                            Swal.fire("Listo!", "Razón social fue creada", "success");
+                        } else {
+                            validacionForm()
+                            //Swal.fire("Lo sentimos", "No se puedo crear", "error");
+                        }
+                    })
+            }
+            else {
+                fetch("/RazonSocial/editarSocialReason", {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json; charset=utf-8" },
+                    body: JSON.stringify(modelo)
+                })
+                    .then(response => {
+                        //return response.ok ? response.json() : Promise.reject(response)
+                        return response.ok ? response.json() : response.text()
+                    })
+                    .then(responseJson => {
+
+                        if (responseJson.valor) {
+                            $("#modalSocialReason").modal("hide");
+                            MostrarRazonSocial();
+                            Swal.fire("Listo!", "La Razón Social fue actualizada", "success");
+                        }
+                        else { validacionForm() }
+                        //Swal.fire("Lo sentimos", "No se puedo actualizar", "error");
+                    })
+            }
+        })
+
+
+
+        function validacionForm() {
+            if ($("#txtrfc").val() == "")
+                $('#mej1').html('<span style="color:red;">Este campo es obligatorio.</span>').show().fadeOut(3500);
+            if ($("#txtbusinnes_name").val() == "")
+                $('#mej2').html('<span style="color:red;">Este campo es obligatorio.</span>').show().fadeOut(3500);
+            if ($("#txtbusinnes_address").val() == "")
+                $('#mej3').html('<span style="color:red;">Este campo es obligatorio.</span>').show().fadeOut(3500);
+
+        }
+    </script>
+}

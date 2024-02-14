@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "OwnBranches";
 }
 
@@ -13,18 +12,18 @@
                 <div class="row justify-content-center">
 
                     <div class="col-10">
-                        <button type="button" class="btn btn-success btn-sm boton-nueva-sucursal">Nueva Sucursal</button>
+                        <button type="button" class="btn btn-sissa btn-rounded boton-nueva-sucursal"><b>+</b> </button>
 
                         <table class="table table-striped" id="tablaSucursales">
                             <thead>
                                 <tr>
-                                    <th>Nombre Sucursal</th>
-                                    <th>Nombre Servidor</th>
-                                    <th>Nombre Base de datos</th>
-                                    <th>Nombre Usuario</th>
-                                    <th>Password</th>
-                                    <th>Status</th>
-                                    <th></th>
+                                    <th scope="col">Nombre Sucursal</th>
+                                    <th scope="col">Nombre Servidor</th>
+                                    <th scope="col">Nombre Base de datos</th>
+                                    <th scope="col">Nombre Usuario</th>
+                                    <th scope="col">Password</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -41,55 +40,62 @@
 
 </div>
 
-
-
 <!-- Modal -->
 <div class="modal fade" id="modalSucursal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Sucursales propias</h5>
-               @* <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>*@
+                @* <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>*@
             </div>
-            <div class="modal-body" id="divmodal">
 
-                <div class="mb-3">
-                    <label class="form-label">Nombre Sucursal</label>
-                    <input type="text" class="form-control" id="txtsucursal" autocomplete="off">
-                </div>
+            <form>
 
-                <div class="mb-3">
-                    <label class="form-label">Nombre Servidor</label>
-                    <input type="text" class="form-control" id="txtservidor" autocomplete="off">
-                </div>
+                <div class="modal-body" id="divmodal">
 
-                <div class="mb-3">
-                    <label class="form-label">Nombre Base de datos</label>
-                    <input type="text" class="form-control" id="txtbase" autocomplete="off">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Nombre Usuario</label>
-                    <input type="text" class="form-control" id="txtusuario" autocomplete="off">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Password</label>
-                    <input type="password" class="form-control" id="txtpassword" autocomplete="off">
-                </div>
-                
+                    <div class="mb-3">
+                        <label class="form-label">Nombre Sucursal</label>
+                        <input type="text" class="form-control input-rounded" id="txtsucursal" autocomplete="off" required>
+                        <p id="mej1"></p>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Nombre Servidor</label>
+                        <input type="text" class="form-control input-rounded" id="txtservidor" autocomplete="off" required>
+                        <p id="mej2"></p>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Nombre Base de datos</label>
+                        <input type="text" class="form-control input-rounded" id="txtbase" autocomplete="off" required>
+                        <p id="mej3"></p>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Nombre Usuario</label>
+                        <input type="text" class="form-control input-rounded" id="txtusuario" autocomplete="off" required>
+                        <p id="mej4"></p>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control input-rounded" id="txtpassword" autocomplete="off" required>
+                        <p id="mej5"></p>
+                    </div>
+
                     <div class="mb-3">
                         <label class="form-label">Status</label>
-                        <select class="form-select" id="selectstatus">
+                        <select class="form-control input-rounded" id="selectstatus">
                             <option value="A">ACTIVO</option>
                             <option value="B">BAJA</option>
 
                         </select>
                     </div>
 
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" id="btncerrar">Cerrar</button>
-                <button type="button" class="btn btn-primary boton-guardar-cambios-sucursal">Guardar</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-rounded btn-secondary" id="btncerrar">Cerrar</button>
+                    <button type="submit" class="btn btn-sissa btn-rounded boton-guardar-cambios-sucursal">Guardar</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -108,15 +114,15 @@
             Password: "",
             Status: ""
         }
-        $(document).on("click", ".boton-nueva-sucursal", function () {
+        $(document).on("click", ".boton-nueva-sucursal", function() {
 
-            _modeloSucursal.Id_sucursal=0;
+            _modeloSucursal.Id_sucursal = 0;
             _modeloSucursal.Sucursal = "";
             _modeloSucursal.Servidor = "";
             _modeloSucursal.Dba = "";
             _modeloSucursal.Usuario = "";
             _modeloSucursal.Password = "";
-            _modeloSucursal.Status="";
+            _modeloSucursal.Status = "";
 
             MostrarModal();
 
@@ -145,7 +151,7 @@
                                     $("<td>").text(sucursal.status),
                                     $("<td>").append(
                                         $("<button>").addClass("btn btn-primary btn-sm boton-editar-sucursal").text("Editar").data("dataSucursal", sucursal)
-                                        
+
                                     )
                                 )
                             )
@@ -158,13 +164,13 @@
         }
 
 
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function() {
 
             MostrarSucursales();
 
         }, false)
 
-        function MostrarModal( ) {
+        function MostrarModal() {
 
             $("#txtsucursal").val(_modeloSucursal.Sucursal);
             $("#txtservidor").val(_modeloSucursal.Servidor);
@@ -178,7 +184,7 @@
 
         }
 
-        $(document).on("click", ".boton-editar-sucursal", function () {
+        $(document).on("click", ".boton-editar-sucursal", function() {
 
             const _sucursal = $(this).data("dataSucursal");
 
@@ -188,18 +194,20 @@
             _modeloSucursal.Dba = _sucursal.dba_name;
             _modeloSucursal.Usuario = _sucursal.usr_name;
             _modeloSucursal.Password = _sucursal.usr_password;
-            _modeloSucursal.Status=_sucursal.status;
+            _modeloSucursal.Status = _sucursal.status;
 
             MostrarModal();
 
         })
 
 
-        $(document).on("click", "#btncerrar", function () {
+        $(document).on("click", "#btncerrar", function() {
             $("#modalSucursal").modal("hide");
         })
 
-        $(document).on("click", ".boton-guardar-cambios-sucursal", function () {
+        $(document).on("click", ".boton-guardar-cambios-sucursal", function(e) {
+            e.preventDefault();
+
 
             const modelo = {
 
@@ -209,18 +217,20 @@
                 dba_name: $("#txtbase").val(),
                 usr_name: $("#txtusuario").val(),
                 usr_password: $("#txtpassword").val(),
-                status: $("#selectstatus").val()
+                status: $("#selectstatus").val(),
+                rs_id: "",
+                rfc: ""
             }
-            if (_modeloSucursal.Id_sucursal==0)
-            {
+            if (_modeloSucursal.Id_sucursal == 0) {
 
                 fetch("/OwnBranches/guardarSucursales", {
                     method: "POST",
                     headers: { "Content-Type": "application/json; charset=utf-8" },
                     body: JSON.stringify(modelo)
-                        })
+                })
                     .then(response => {
-                        return response.ok ? response.json() : Promise.reject(response)
+                        //return response.ok ? response.json() : Promise.reject(response)
+                        return response.ok ? response.json() : response.text()
                     })
                     .then(responseJson => {
 
@@ -230,35 +240,48 @@
                             MostrarSucursales();
                         }
                         else
-                            Swal.fire("Lo sentimos", "No se puedo crear", "error");
+                            validacionForm()
                     })
             }
-            else
-            {
+            else {
                 fetch("/OwnBranches/editarSucursales", {
                     method: "PUT",
                     headers: { "Content-Type": "application/json; charset=utf-8" },
                     body: JSON.stringify(modelo)
                 })
                     .then(response => {
-                        return response.ok ? response.json() : Promise.reject(response)
+                        //return response.ok ? response.json() : Promise.reject(response)
+                        return response.ok ? response.json() : response.text()
                     })
                     .then(responseJson => {
 
                         if (responseJson.valor) {
                             $("#modalSucursal").modal("hide");
                             Swal.fire("Listo!", "La sucursal fue actualizada", "success");
-                            MostrarSucursales(); 
+                            MostrarSucursales();
                         }
                         else
-                            Swal.fire("Lo sentimos", "No se puedo actualizar", "error");
+                            validacionForm()
+                        //Swal.fire("Lo sentimos", "No se puedo actualizar", "error");
                     })
-            
-            
+
             }
+
 
         })
 
+        function validacionForm() {
+            if ($("#txtsucursal").val() == "")
+                $('#mej1').html('<span style="color:red;">Este campo es obligatorio.</span>').show().fadeOut(3500);
+            if ($("#txtservidor").val() == "")
+                $('#mej2').html('<span style="color:red;">Este campo es obligatorio.</span>').show().fadeOut(3500);
+            if ($("#txtbase").val() == "")
+                $('#mej3').html('<span style="color:red;">Este campo es obligatorio.</span>').show().fadeOut(3500);
+            if ($("#txtusuario").val() == "")
+                $('#mej4').html('<span style="color:red;">Este campo es obligatorio.</span>').show().fadeOut(3500);
+            if ($("#txtpassword").val() == "")
+                $('#mej5').html('<span style="color:red;">Este campo es obligatorio.</span>').show().fadeOut(3500);
+        }
+
     </script>
 }
-
